@@ -1,0 +1,22 @@
+INSERT INTO `gymdb`.`member` (
+    `member_id`,
+    `name`,
+    `phone_number`,
+    `emergency_contact`,
+    `address`,
+    `credit_card`,
+    `franchise_number`,
+    `trainer_employee_number`
+) VALUES (
+    '2',
+    'Max',
+    '1234567',
+    '9876543',
+    '123 Address',
+    '123456',
+    '1',
+    'TR456'
+);
+
+
+SELECT * FROM member;

@@ -15,7 +15,7 @@ function createDB(callback) {
             console.error('dbCreator: Error connecting to the database:', err);
             return;
         }
-        console.log("dbCreator: Connected to the database!");
+        console.log("dbCreator: Connected to the database");
 
         // Create new DB
         createEmpty(function() {

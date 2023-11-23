@@ -1,40 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ... (existing head content) ... -->
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB Query App</title>
 </head>
 <body>
+    <h1>DB Query App</h1>
+    
+    <textarea id="queryInput" placeholder="Enter SQL query"></textarea>
+    <button onclick="executeQuery()">Execute Query</button>
+    
+    <div id="resultOutput"></div>
 
-    <header>
-        <h1>GymDB</h1>
-    </header>
-
-    <section class="button-menu">
-        <h2>Main Menu</h2>
-        <div class="button-menu">
-            <button>Search Members</button>
-            <button>Search Workers</button>
-            <button>Search Equipment</button>
-            <button>Incident Reports</button>
-            <button>Trainer Functions</button>
-            <button>Manager Functions</button>
-        </div>
-    </section>
-
-    <div id="foregroundMenu" class="foreground-menu">
-        <h2>Foreground Menu</h2>
-        <button class="back-button">Back</button>
-        <!-- Add additional buttons or content for the foreground menu as needed -->
-    </div>
-
-    <footer>
-        <p>&copy; 2023 GymDB</p>
-    </footer>
-
-    <!-- Include JavaScript files -->
-    <script src="main.js"></script>
-    <script src="foregroundMenu.js"></script>
-
+    <script src="app.js"></script>
 </body>
 </html>

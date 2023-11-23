@@ -25,4 +25,17 @@ MySQL: https://dev.mysql.com/downloads/
 
 MySQL driver for Node (run command in project directory): npm install mysql@latest
 
-After compiling and running dbDriver should print "dbDriver: Connected to the database"
+After compiling and running 'node dbDriver.js' should print "dbDriver: Connected to the database"
+
+
+========== Optional stuff to mess around with HTTP connections: ============================
+
+Express: npm install express
+
+Axios: npm install axios
+
+HTTP server: npm install -g http-server
+
+	-To start the server: npx http-server
+
+cors: npm install cors
