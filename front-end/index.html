@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DB Query App</title>
+    <title>GymDB</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>DB Query App</h1>
+    <header>
+        <h1>GymDB</h1>
+    </header>
     
-    <textarea id="queryInput" placeholder="Enter SQL query"></textarea>
-    <button onclick="executeQuery()">Execute Query</button>
-    
-    <div id="resultOutput"></div>
+    <section>
+        <label for="queryInput">Enter SQL Query:</label>
+        <textarea id="queryInput" placeholder="Example: SELECT * FROM member;"></textarea>
+        <button onclick="executeQuery()">Execute Query</button>
+        <div id="resultOutput"></div>
+    </section>
+
+    <footer>
+        <text>GymDB</text>
+    </footer>
 
     <script src="app.js"></script>
 </body>
