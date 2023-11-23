@@ -1,0 +1,28 @@
+Need to install the following on your machine:
+
+Node JS enviroment: https://nodejs.org/en
+	
+	-Make sure you allow it to install all dependencies
+
+MySQL: https://dev.mysql.com/downloads/
+
+	-I installed the community version for windows
+	-In the installer select 'full' setup type
+	-Type and Networking: Select 'development computer' config
+	-Type and Networking: Leave Connectivity settings as is (port:3306)
+	-Authentication Method: Leave as strong
+	-Accounts and Roles: I just set the root password to 'pass'
+	-Windows Service: Leave as is
+	-Server File Permissions: Leave as full access
+	-Apply Configuration: Click execute
+	-Don't change Router Configuration just click finish
+	-Enter root password and click next
+
+	Guide I followed for configuring MySQL (has steps for mac): 
+	https://ladvien.com/data-analytics-mysql-localhost-setup/
+
+	You can open MySQL Workbench, DB is named 'Local instance MySQL80'
+
+MySQL driver for Node (run command in project directory): npm install mysql@latest
+
+After all that compiling and running dbDriver should print "Connected to the database!"
