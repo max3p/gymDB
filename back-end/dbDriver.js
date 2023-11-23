@@ -23,9 +23,24 @@ con.connect(function (err) {
 
     // Initialize a new 'gymdb' if the flag is set to true
     if (initializeNewDB) {
-        createDB(function() {
+        createDB(function () {
             con.config.database = "gymdb";
             console.log("dbDriver: con.database updated to 'gymdb'");
         });
     }
 });
+
+// Queries MySQL DB
+// Input: the query as a string
+function queryDB(query, callback) {
+    con.query(query, function (err, result) {
+        if (err) {
+            throw err;
+        }
+        if (callback) {
+            callback(result);
+        }
+    });
+}
+
+module.exports = { queryDB };
