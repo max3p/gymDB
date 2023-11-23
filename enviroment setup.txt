@@ -25,4 +25,4 @@ MySQL: https://dev.mysql.com/downloads/
 
 MySQL driver for Node (run command in project directory): npm install mysql@latest
 
-After all that compiling and running dbDriver should print "Connected to the database!"
+After compiling and running dbDriver should print "dbDriver: Connected to the database"

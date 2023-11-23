@@ -16,13 +16,16 @@ const initializeNewDB = true;
 // Connects to the DB
 con.connect(function (err) {
     if (err) {
-        console.error('Error connecting to the database:', err);
+        console.error('dbDriver: Error connecting to the database:', err);
         return;
     }
-    console.log("Connected to the database!");
+    console.log("dbDriver: Connected to the database");
 
-    // Initialize a new 'gymdb' if flag is set to true
+    // Initialize a new 'gymdb' if the flag is set to true
     if (initializeNewDB) {
-        createDB();
+        createDB(function() {
+            con.config.database = "gymdb";
+            console.log("dbDriver: con.database updated to 'gymdb'");
+        });
     }
 });
