@@ -4,6 +4,8 @@ const createDB = require('./dbCreator');
 const mysql = require('mysql2');
 const express = require('express');
 const cors = require('cors');
+const app = express();
+const port = 3000;
 
 // Set the flag to true if you want to initialize a new database
 const initializeNewDB = false;
@@ -14,9 +16,6 @@ const con = mysql.createConnection({
     password: "pass",
     database: "gymdb"   //this won't exist if you have not yet initiaized a db, may need to comment out
 });
-
-const app = express();
-const port = 3000;
 
 app.use(cors());
 app.use(express.json());
