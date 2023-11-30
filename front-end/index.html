@@ -1,27 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymDB</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test App</title>
 </head>
 <body>
-    <header>
-        <h1>GymDB</h1>
-    </header>
-    
-    <section>
-        <label for="queryInput">Enter SQL Query:</label>
-        <textarea id="queryInput" placeholder="Example: SELECT * FROM member;"></textarea>
-        <button onclick="executeQuery()">Execute Query</button>
-        <div id="resultOutput"></div>
-    </section>
 
-    <footer>
-        <text>GymDB</text>
-    </footer>
+  <h1>Members List</h1>
+  <ul id="membersList"></ul>
 
-    <script src="app.js"></script>
+  <script src="app.js"></script>
+
 </body>
 </html>

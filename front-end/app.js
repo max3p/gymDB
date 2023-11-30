@@ -1,41 +1,35 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Function to execute the query
-    const executeQuery = async () => {
-        const queryInput = document.getElementById("queryInput").value;
+/*
+app.js
+Fetches data from the back-end API
+*/
 
+document.addEventListener('DOMContentLoaded', () => {
+    const membersListElement = document.getElementById('membersList');
+    const workersListElement = document.getElementById('workersList');
+
+    // Function to fetch members from the API
+    const fetchMembers = async () => {
+        console.log('app.js: called fetchMembers'); //DEBUG
         try {
-            const response = await fetch('http://localhost:3000/query', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ query: queryInput }),
+            const response = await fetch('http://localhost:3000/members');
+            const members = await response.json();
+            console.log('Members:', members);
+
+            // Update the UI with the fetched members
+            members.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `Member ${item.id}: ${item.name}`;
+                membersListElement.appendChild(listItem);
             });
-
-            if (!response.ok) {
-                throw new Error(`Server responded with status ${response.status}: ${await response.text()}`);
-            }
-
-            const result = await response.json();
-            displayResult(result);
         } catch (error) {
-            console.error('Error executing query:', error.message);
-            displayResult({ error: 'An error occurred while executing the query.' });
+            console.error('Error fetching members:', error);
         }
     };
 
-    // Function to display the result
-    const displayResult = (result) => {
-        const resultOutput = document.getElementById("resultOutput");
+    // Function to fetch workers from the API
+    //TODO
 
-        if (result.error) {
-            resultOutput.innerHTML = `<p>Error: ${result.error}</p>`;
-        } else {
-            resultOutput.innerHTML = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
-        }
-    };
-
-    // Attach executeQuery function to the global scope for simplicity
-    window.executeQuery = executeQuery;
+    // Call the fetchMembers
+    fetchMembers();
 });
 
