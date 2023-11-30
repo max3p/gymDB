@@ -240,6 +240,14 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+var sModal = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == sModal) {
+        sModal.style.display = "none";
+    }
+}
 </script>
 
 </body>
