@@ -1,4 +1,4 @@
-// signupScript.js
+// closeModals.js
 
 // Get the modal
 var modal = document.getElementById('id01');
