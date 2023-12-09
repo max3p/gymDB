@@ -35,8 +35,55 @@ app.get('/getAllMembers', (req, res) => {
     });
 });
 
+// Route to get a single member from db
+app.post('/getMember', (req, res) => {
+  console.log('api.js: getMember called');
+  const member_id = req.body.member_id;
+  const sql = `SELECT * FROM Member WHERE member_id = ${member_id}`;
 
+  db.executeQuery(sql, [], (err, results) => {
+      if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+      }
 
+      console.log('response: ', results) //DEBUG
+      res.header('Content-Type', 'application/json');
+      res.json(results);
+  });
+});
+
+// Route to get a list of all trainers from db
+app.get('/getAllTrainers', (req, res) => {
+  console.log('api.js: getAllTrainers called');
+  const sql = 'SELECT * FROM Trainer';
+
+  db.executeQuery(sql, [], (err, results) => {
+      if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+      }
+
+      console.log('response: ', results) //DEBUG
+      res.header('Content-Type', 'application/json');
+      res.json(results);
+  });
+});
+
+// Route to get a single trainer from db
+app.post('/getTrainer', (req, res) => {
+  console.log('api.js: getTrainer called');
+  const member_id = req.body.employee_number;
+  const sql = `SELECT * FROM Trainer WHERE employee_number = ${employee_number}`;
+
+  db.executeQuery(sql, [], (err, results) => {
+      if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+      }
+
+      console.log('response: ', results) //DEBUG
+      res.header('Content-Type', 'application/json');
+      res.json(results);
+  });
+});
 
 
 // Add more routes for all database functions...
