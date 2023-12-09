@@ -153,10 +153,172 @@ app.post('/getWorkoutPlan', (req, res) => {
   });
 });
 
+// Route to get a list of all incident reports from db
+app.get('/getAllIncidentReports', (req, res) => {
+  console.log('api.js: getAllIncidentReports called');
+  const sql = 'SELECT * FROM IncidentReport';
 
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
 
-// Add more routes for all database functions...
-// TODO
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+// Route to get a single incident report from db
+app.post('/getIncidentReport', (req, res) => {
+  console.log('api.js: getIncidentReport called');
+  const report_number = req.body.report_number;
+  const sql = `SELECT * FROM IncidentReport WHERE report_number = ${report_number}`;
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+// Route to get a list of all revenue reports from db
+app.get('/getAllRevenueReports', (req, res) => {
+  console.log('api.js: getAllRevenueReports called');
+  const sql = 'SELECT * FROM RevenueReport';
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+// Route to get a single revenue report from db
+app.post('/getRevenueReport', (req, res) => {
+  console.log('api.js: getRevenueReport called');
+  const reference_number = req.body.reference_number;
+  const sql = `SELECT * FROM RevenueReport WHERE reference_number = ${reference_number}`;
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+// Route to get a list of all paychecks from db
+app.get('/getAllPaychecks', (req, res) => {
+  console.log('api.js: getAllPaychecks called');
+  const sql = 'SELECT * FROM Paycheck';
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+// Route to get a single paycheck from db
+app.post('/getPaycheck', (req, res) => {
+  console.log('api.js: getPaycheck called');
+  const reference_number = req.body.reference_number;
+  const sql = `SELECT * FROM Paycheck WHERE reference_number = ${reference_number}`;
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+// Route to get a list of all shift schedules from db
+app.get('/getAllShiftSchedules', (req, res) => {
+  console.log('api.js: getAllShiftSchedules called');
+  const sql = 'SELECT * FROM ShiftSchedule';
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+// Route to get a single shift schedule from db
+app.post('/getShiftSchedule', (req, res) => {
+  console.log('api.js: getShiftSchedule called');
+  const date = req.body.date;
+  const sql = `SELECT * FROM ShiftSchedule WHERE date = ${date}`;
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+// Route to get a list of all gym locations from db
+app.get('/getAllGymLocations', (req, res) => {
+  console.log('api.js: getAllGymLocations called');
+  const sql = 'SELECT * FROM GymLocation';
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+// Route to get a single gym location from db
+app.post('/getGymLocation', (req, res) => {
+  console.log('api.js: getGymLocation called');
+  const franchise_number = req.body.franchise_number;
+  const sql = `SELECT * FROM GymLocation WHERE franchise_number = ${franchise_number}`;
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+// TODO: add INSERT routes to add new tuples
 
 // Start the server
 app.listen(port, () => {
