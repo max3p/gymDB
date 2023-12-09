@@ -12,39 +12,16 @@
 
 <body>
 
+
     <!-- Add the log out button here -->
-    <button class="logout-btn" onclick="document.getElementById('id11').style.display='block'" style="width:auto;">Log out</button>
+    <button class="logout-btn" onclick="navigateToPage().style.display='block'" style="width:auto;">Log out</button>
 
     <header>
         Momentum Fitness
     </header>
 
     <div id="id11" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-
-                <!-- this button is now watched by an event listener in loginScript.js-->
-                <button id="id05" type="button">Login</button>
-
-                <button class="signUp-btn" type="button" onclick="document.getElementById('id04').style.display='block'" style="width:auto;">Sign Up </button>
-
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
-            </div>
-        </form>
+        <a href="login.html"></a>
     </div>
 
     <button class="search-btn" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Search</button>
