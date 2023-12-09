@@ -85,6 +85,43 @@ app.post('/getTrainer', (req, res) => {
   });
 });
 
+//route to get manager? don't think its needed at the moment
+
+// Route to get a list of all equipment from db
+app.get('/getAllEquipment', (req, res) => {
+  console.log('api.js: getAllEquipment called');
+  const sql = 'SELECT * FROM Equipment';
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+// Route to get a single equipment from db
+app.post('/getEquipment', (req, res) => {
+  console.log('api.js: getEquipment called');
+  const equipment_id = req.body.equipment_id;
+  const sql = `SELECT * FROM Equipment WHERE equipment_id = ${equipment_id}`;
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+
+
 
 // Add more routes for all database functions...
 // TODO
