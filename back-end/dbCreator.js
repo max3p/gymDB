@@ -28,7 +28,7 @@ function createDB() {
                 }
 
                 // Create member table
-                createTable("member", "CREATE TABLE `gymdb`.`member` (" +
+                createTable("Member", "CREATE TABLE `gymdb`.`Member` (" +
                     "`member_id` CHAR(10) PRIMARY KEY," +
                     "`name` CHAR(50)," +
                     "`phone_number` CHAR(15)," +

@@ -20,9 +20,9 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 // Route to get a list of all members from MySQL database
-app.get('/members', (req, res) => {
-    console.log('api.js: get members called');
-    const sql = 'SELECT * FROM member';
+app.get('/getAllMembers', (req, res) => {
+    console.log('api.js: getAllMembers called');
+    const sql = 'SELECT * FROM Member';
 
     db.executeQuery(sql, [], (err, results) => {
         if (err) {
@@ -35,21 +35,9 @@ app.get('/members', (req, res) => {
     });
 });
 
-// Route to add a new member in the database
-app.post('/members', (req, res) => {
-  console.log('api.js: create member called');
-  const { name, email } = req.body;
-  const sql = 'INSERT INTO member (name, email) VALUES (?, ?)';
 
-  db.executeQuery(sql, [name, email], (err, results) => {
-      if (err) {
-          return res.status(500).json({ error: 'Internal Server Error' });
-      }
 
-      res.header('Content-Type', 'application/json');
-      res.json({ message: 'Member created successfully', memberId: results.insertId });
-  });
-});
+
 
 // Add more routes for all database functions...
 // TODO
