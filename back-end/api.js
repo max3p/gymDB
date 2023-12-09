@@ -35,6 +35,22 @@ app.get('/members', (req, res) => {
     });
 });
 
+// Route to add a new member in the database
+app.post('/members', (req, res) => {
+  console.log('api.js: create member called');
+  const { name, email } = req.body;
+  const sql = 'INSERT INTO member (name, email) VALUES (?, ?)';
+
+  db.executeQuery(sql, [name, email], (err, results) => {
+      if (err) {
+          return res.status(500).json({ error: 'Internal Server Error' });
+      }
+
+      res.header('Content-Type', 'application/json');
+      res.json({ message: 'Member created successfully', memberId: results.insertId });
+  });
+});
+
 // Add more routes for all database functions...
 // TODO
 
