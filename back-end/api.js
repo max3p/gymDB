@@ -120,6 +120,38 @@ app.post('/getEquipment', (req, res) => {
   });
 });
 
+// Route to get a list of all workout plans from db
+app.get('/getAllWorkoutPlans', (req, res) => {
+  console.log('api.js: getAllWorkoutPlans called');
+  const sql = 'SELECT * FROM WorkoutPlan';
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
+
+// Route to get a single workout plan from db
+app.post('/getWorkoutPlan', (req, res) => {
+  console.log('api.js: getWorkoutPlan called');
+  const report_number = req.body.report_number;
+  const sql = `SELECT * FROM WorkoutPlan WHERE report_number = ${report_number}`;
+
+  db.executeQuery(sql, [], (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log('response: ', results); // DEBUG
+    res.header('Content-Type', 'application/json');
+    res.json(results);
+  });
+});
 
 
 
