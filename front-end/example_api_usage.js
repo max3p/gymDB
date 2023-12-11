@@ -59,7 +59,7 @@ api.getAllTuples(entityNameToRetrieve, (err, tuplesArray) => {
 // Example of using the addMember function to insert a new member into the database
 // first create a new Member object
 const newMember = {
-    name: 'Sharoon',
+    name: 'Quagmire',
     phone_number: '123-456-7890',
     emergency_contact: '123-444-4456',
     address: '123 Main St, City',
