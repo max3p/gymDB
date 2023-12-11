@@ -86,6 +86,28 @@ function addMember(memberObject, callback) {
     });
 }
 
+// Deletes a member from the database based on the member_id, must specify member_id as parameter
+function deleteMember(memberId, callback) {
+    console.log('api.js: deleteMember called');
+
+    const sql = `DELETE FROM Member WHERE member_id = ?`;
+
+    db.executeQuery(sql, [memberId], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        // Check if any rows were affected to determine if the member was deleted successfully
+        const isDeleted = results.affectedRows > 0;
+
+        if (isDeleted) {
+            callback(null, { message: 'Member deleted successfully' });
+        } else {
+            callback({ error: 'Member not found or could not be deleted' });
+        }
+    });
+}
 
 
-module.exports = {getMember, getAllMembers, addMember};
+
+module.exports = {getMember, getAllMembers, addMember, deleteMember};

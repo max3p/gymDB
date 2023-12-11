@@ -59,7 +59,7 @@ const newMember = {
 };
 
 // then call addMember to insert the new member into the db
-api.addMember(newMember, (err, result) => {
+api.addMember(newMember, (err) => {
     if (err) {
       console.error('Error:', err);
     } else {
@@ -67,3 +67,14 @@ api.addMember(newMember, (err, result) => {
     }
 });
 
+// Example of using deleteMember to delete a tuple in the database
+
+const memberIdToDelete = 96757037; //must specifiy id of member to delete
+
+api.deleteMember(memberIdToDelete, (err, result) => {
+    if (err) {
+        console.error('Error:', err);
+    } else {
+        console.log('Member deleted successfully');
+    }
+});
