@@ -30,6 +30,8 @@ After compiling and running 'node dbDriver.js' should print "dbDriver: Connected
 
 ========== Optional stuff to mess around with HTTP connections: ============================
 
+NO LONGER USED
+
 Express: npm install express
 
 Axios: npm install axios
