@@ -5,25 +5,28 @@ Examples functions to retrieve/store data using api.js
 
 const api = require("../back-end/api.js");
 
-// Example of using the getMember function to retrieve a single member
-const memberId = 2; 
-api.getMember(memberId, (err, memberObject) => {
+// Example of using getTuple function to retrieve a single tuple
+const entityId = 2; // Specify the ID of the tuple to retrieve
+const entityName = 'Member'; // Specify the name of the table
+
+api.getTuple(entityName, entityId, (err, tupleObject) => {
     if (err) {
         console.error('Error:', err);
     } else {
-        console.log('\ngetMember() Result:');
+        console.log('\ngetTuple() Result:');
 
-        // Print each attribute of memberObject
-        console.log('   Member ID:', memberObject.member_id);
-        console.log('   Name:', memberObject.name);
-        console.log('   Phone Number:', memberObject.phone_number);
-        console.log('   Emergency Contact:', memberObject.emergency_contact);
-        console.log('   Address:', memberObject.address);
-        console.log('   Credit Card:', memberObject.credit_card);
-        console.log('   Franchise Number:', memberObject.franchise_number);
-        console.log('   Trainer Employee ID:', memberObject.trainer_employee_id);
+        // Print each attribute of tupleObject
+        console.log(`   ${entityName} ID:`, tupleObject[`${entityName}_id`]);
+        console.log('   Name:', tupleObject.name);
+        console.log('   Phone Number:', tupleObject.phone_number);
+        console.log('   Emergency Contact:', tupleObject.emergency_contact);
+        console.log('   Address:', tupleObject.address);
+        console.log('   Credit Card:', tupleObject.credit_card);
+        console.log('   Franchise Number:', tupleObject.franchise_number);
+        console.log('   Trainer Employee ID:', tupleObject.trainer_employee_id);
     }
 });
+
 
 // Example of using the getAllMembers function to retrieve all members
 api.getAllMembers((err, membersArray) => {

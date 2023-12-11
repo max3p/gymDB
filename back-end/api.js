@@ -44,6 +44,35 @@ function editTuple(entityName, id, attributeName, newValue, callback) {
     });
 }
 
+// Retrieves a single tuple from the database, returned as an object.
+// Must specify entityName and id as parameters.
+function getTuple(entityName, id, callback) {
+    console.log('api.js: getTuple called');
+
+    const sql = `SELECT * FROM ${entityName} WHERE ${entityName}_id = ?`;
+
+    db.executeQuery(sql, [id], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        if (results.length === 0) {
+            return callback({ error: `${entityName} not found` });
+        }
+
+        callback(null, results[0]);
+    });
+}
+
+
+
+
+
+
+
+
+
+
 /* ================================== MEMBER ================================== */
 
 // Retrieves a single member from the database, returned as an object. Must specify member_id as a parameters. 
@@ -507,7 +536,7 @@ function deleteWorkoutPlan(reportNumber, callback) {
 }
 
 module.exports = { 
-    editTuple,
+    editTuple, getTuple, 
     getMember, getAllMembers, addMember, deleteMember,
     getWorker, getAllWorkers, addWorker, deleteWorker,
     getEquipment, getAllEquipment, addEquipment, deleteEquipment,
