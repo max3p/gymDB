@@ -28,97 +28,117 @@ function createDB() {
                 }
 
                 // Create member table
-                createTable("member", "CREATE TABLE `gymdb`.`member` (" +
-                    "`member_id` CHAR(10) PRIMARY KEY," +
-                    "`name` CHAR(50)," +
-                    "`phone_number` CHAR(15)," +
-                    "`emergency_contact` CHAR(15)," +
-                    "`address` CHAR(100)," +
-                    "`credit_card` CHAR(16)," +
-                    "`franchise_number` CHAR(10)," +
-                    "`trainer_employee_number` CHAR(10)" +
-                    ");");
+                createTable("Member", "CREATE TABLE `gymdb`.`Member` (" +
+                "`member_id` CHAR(8) PRIMARY KEY," +
+                "`name` CHAR(50)," +
+                "`phone_number` CHAR(15)," +
+                "`emergency_contact` CHAR(15)," +
+                "`address` CHAR(100)," +
+                "`credit_card` CHAR(20)," +
+                "`franchise_number` char(8)," +
+                "`trainer_employee_id` char(8)" +
+                ");");
+
+                // Create worker table
+                createTable("Worker", "CREATE TABLE `gymdb`.`Worker` (" +
+                "`employee_id` CHAR(8) PRIMARY KEY," +
+                "`name` CHAR(50)," +
+                "`phone_number` CHAR(15)," +
+                "`availability` CHAR(100)," +
+                "`emergency_contact` TEXT," +
+                "`franchise_number` char(8)" +
+                ");");
 
                 // Create trainer table
                 createTable("Trainer", "CREATE TABLE `gymdb`.`Trainer` (" +
-                    "`employee_number` CHAR(10) PRIMARY KEY," +
-                    "`schedule` CHAR(100)," +
-                    "`clients` TEXT," +
-                    "`specialization` CHAR(50)" +
-                    ");");
+                "`employee_id` CHAR(8) PRIMARY KEY," +
+                "`schedule` CHAR(100)," +
+                "`clients` TEXT," +
+                "`specialization` CHAR(50)" +
+                ");");
 
-                //Create Manager table
+                // Create manager table
                 createTable("Manager", "CREATE TABLE `gymdb`.`Manager` (" +
-                    "`employee_number` CHAR(10) PRIMARY KEY," +
-                    "`name` CHAR(50)," +
-                    "`phone_number` CHAR(15)" +
-                    ");");
+                "`employee_id` CHAR(8) PRIMARY KEY" +
+                ");");
+
+                // Create receptionist table
+                createTable("Receptionist", "CREATE TABLE `gymdb`.`Receptionist` (" +
+                "`employee_id` char(8) PRIMARY KEY" +
+                ");");
 
                 // Create equipment table
                 createTable("Equipment", "CREATE TABLE `gymdb`.`Equipment` (" +
-                    "`equipment_id` CHAR(10) PRIMARY KEY," +
-                    "`equipment_condition` CHAR(50)," +
-                    "`name` CHAR(50)," +
-                    "`date_bought` DATE," +
-                    "`maintenance_history` TEXT" +
-                    ");");
+                "`equipment_id` char(8) PRIMARY KEY," +
+                "`equipment_condition` CHAR(50)," +
+                "`name` CHAR(50)," +
+                "`date_bought` DATE," +
+                "`maintenance_history` TEXT" +
+                ");");
 
-                //Create Workout plan table
+                // Create workout plan table
                 createTable("WorkoutPlan", "CREATE TABLE `gymdb`.`WorkoutPlan` (" +
-                    "`report_number` CHAR(10) PRIMARY KEY," +
-                    "`member_name` CHAR(50)," +
-                    "`trainer_name` CHAR(50)," +
-                    "`date_generated` DATE," +
-                    "`days_of_the_week` CHAR(50)," +
-                    "`frequency` CHAR(20)," +
-                    "`exercises` TEXT" +
-                    ");");
+                "`report_number` char(8) PRIMARY KEY," +
+                "`employee_id` char(8)," +
+                "`date_generated` DATE," +
+                "`days_of_the_week` CHAR(50)," +
+                "`frequency` CHAR(20)," +
+                "`exercises` TEXT" +
+                ");");
 
-                // Create an Incident report table
+                // Create incident report table
                 createTable("IncidentReport", "CREATE TABLE `gymdb`.`IncidentReport` (" +
-                    "`report_number` CHAR(10) PRIMARY KEY," +
-                    "`people_involved` TEXT," +
-                    "`equipment_involved` TEXT," +
-                    "`date` DATE," +
-                    "`time` TIME" +
-                    ");");
+                "`report_number` char(8) PRIMARY KEY," +
+                "`people_involved` TEXT," +
+                "`equipment_involved` TEXT," +
+                "`date` DATE," +
+                "`time` TIME" +
+                ");");
 
                 // Create revenue report table
                 createTable("RevenueReport", "CREATE TABLE `gymdb`.`RevenueReport` (" +
-                    "`reference_number` CHAR(10) PRIMARY KEY," +
-                    "`revenue_generated` DECIMAL(10, 2)," +
-                    "`period` CHAR(50)," +
-                    "`expenditure` DECIMAL(10, 2)" +
-                    ");");
+                "`reference_number` char(8) PRIMARY KEY," +
+                "`revenue_generated` DECIMAL(10, 2)," +
+                "`period` CHAR(50)," +
+                "`expenditure` DECIMAL(10, 2)" +
+                ");");
 
-                // Create pay check table
+                // Create paycheck table
                 createTable("Paycheck", "CREATE TABLE `gymdb`.`Paycheck` (" +
-                    "`reference_number` CHAR(10) PRIMARY KEY," +
-                    "`employee_name` CHAR(50)," +
-                    "`period` CHAR(50)," +
-                    "`hours_worked` DECIMAL(5, 2)," +
-                    "`amount` DECIMAL(10, 2)," +
-                    "`tax_deductions` DECIMAL(8, 2)," +
-                    "`hourly_rate` DECIMAL(8, 2)," +
-                    "`bank_account_info` CHAR(20)" +
-                    ");");
+                "`reference_number` char(8) PRIMARY KEY," +
+                "`employee_id` char(8)," +
+                "`period` CHAR(50)," +
+                "`hours_worked` DECIMAL(5, 2)," +
+                "`amount` DECIMAL(10, 2)," +
+                "`tax_deductions` DECIMAL(8, 2)," +
+                "`hourly_rate` DECIMAL(8, 2)," +
+                "`bank_account_info` CHAR(20)" +
+                ");");
 
                 // Create shift schedule table
                 createTable("ShiftSchedule", "CREATE TABLE `gymdb`.`ShiftSchedule` (" +
-                    "`date` DATE PRIMARY KEY," +
-                    "`employees` TEXT," +
-                    "`break` DECIMAL(5, 2)," +
-                    "`total_hours` DECIMAL(5, 2)" +
-                    ");");
+                "`date` DATE PRIMARY KEY," +
+                "`employees` TEXT," +
+                "`break` DECIMAL(5, 2)," +
+                "`total_hours` DECIMAL(5, 2)" +
+                ");");
 
-                // Create Gym location table
+                // Create gym location table
                 createTable("GymLocation", "CREATE TABLE `gymdb`.`GymLocation` (" +
-                    "`franchise_number` CHAR(10) PRIMARY KEY," +
-                    "`name` CHAR(50)," +
-                    "`address` CHAR(100)" +
-                    ");");
+                "`franchise_number` char(8) PRIMARY KEY," +
+                "`name` CHAR(50)," +
+                "`address` CHAR(100)" +
+                ");");
 
-                // TODO: create all tables...
+                //Add all foreign keys once tables are created
+                alterTable("Member", "ALTER TABLE `Member` ADD FOREIGN KEY (`franchise_number`) REFERENCES `GymLocation`(`franchise_number`);");
+                alterTable("Member", "ALTER TABLE `Member` ADD FOREIGN KEY (`trainer_employee_id`) REFERENCES `Trainer`(`employee_id`);");
+                alterTable("Worker", "ALTER TABLE `Worker` ADD FOREIGN KEY (`franchise_number`) REFERENCES `GymLocation`(`franchise_number`);");
+                alterTable("Manager", "ALTER TABLE `Manager` ADD FOREIGN KEY (`employee_id`) REFERENCES `Worker`(`employee_id`);");
+                alterTable("Receptionist", "ALTER TABLE `Receptionist` ADD FOREIGN KEY (`employee_id`) REFERENCES `Worker`(`employee_id`);");
+                alterTable("WorkoutPlan", "ALTER TABLE `WorkoutPlan` ADD FOREIGN KEY (`employee_id`) REFERENCES `Worker`(`employee_id`);");
+                alterTable("Paycheck", "ALTER TABLE `Paycheck` ADD FOREIGN KEY (`employee_id`) REFERENCES `Worker`(`employee_id`);");
+
             });
         });
     });
@@ -157,6 +177,13 @@ function createTable(name, query) {
     con.query(query, function (err, result) {
         if (err) throw err;
         console.log(`dbCreator: ${name} table created`);
+    });
+}
+
+function alterTable(name, query) {
+    con.query(query, function (err, result) {
+        if (err) throw err;
+        console.log(`dbCreator: ${name} table altered`);
     });
 }
 
