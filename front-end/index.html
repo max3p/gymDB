@@ -4,17 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="members.js"></script>
   <title>Test App</title>
 </head>
 <body>
 
 
+  <!-- Modal -->
+  <div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="memberModalLabel">Member Information</h4>
+        </div>
+        <div class="modal-body" id="memberModalBody">
+          <!-- Content will be dynamically added here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
   <h1>Members List</h1>
   <ul id="membersList"></ul>
 
   <table>
     <tr>
+      <th></th>
       <th>ID</th>
       <th>Firstname</th>
       <th>Lastname</th>
@@ -23,5 +42,10 @@
 
   <script src="members.js"></script>
 
+ <!-- Bootstrap JavaScript (jQuery and Bootstrap JS) -->
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 </body>
-</html>
+</html> 

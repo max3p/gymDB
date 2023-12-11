@@ -30,9 +30,23 @@ const membersList = [
     for (let i = 0; i < membersList.length; i++) {
       const member = membersList[i];
       const row = table.insertRow();
-      row.insertCell(0).textContent = member.id;
-      row.insertCell(1).textContent = member.firstName;
-      row.insertCell(2).textContent = member.lastName;
+
+      // Add user icon to the first cell and make it clickable
+      const iconCell = row.insertCell(0);
+      const icon = document.createElement('i');
+      icon.className = 'glyphicon glyphicon-user clickable-icon';
+      icon.style.fontSize = '24px';
+      icon.addEventListener('click', function() {
+        // Open the modal with member information
+        const modalBody = document.getElementById('memberModalBody');
+        modalBody.innerHTML = `<h2>${member.firstName} ${member.lastName}</h2><p>ID: ${member.id}</p>`;
+        $('#memberModal').modal('show');
+      });
+      iconCell.appendChild(icon);
+
+      row.insertCell(1).textContent = member.id;
+      row.insertCell(2).textContent = member.firstName;
+      row.insertCell(3).textContent = member.lastName;
     }
   });
   
