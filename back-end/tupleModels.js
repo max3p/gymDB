@@ -1,6 +1,7 @@
 /*
 tupleModels.js
-Contains objects to model tuples for all mysql tables
+Contains objects that model tuples for all mysql tables
+Use as reference when inserting tuples
 */
 
 const Member = {
@@ -26,7 +27,7 @@ const Worker = {
 const Trainer = {
     employee_id: "",
     schedule: "",
-    clients: [],
+    clients: "",
     specialization: ""
 };
 
@@ -43,7 +44,7 @@ const Equipment = {
     equipment_condition: "",
     name: "",
     date_bought: "",
-    maintenance_history: []
+    maintenance_history: ""
 };
 
 const WorkoutPlan = {
@@ -52,13 +53,13 @@ const WorkoutPlan = {
     date_generated: "",
     days_of_the_week: "",
     frequency: "",
-    exercises: []
+    exercises: ""
 };
 
 const IncidentReport = {
     report_number: "",
-    people_involved: [],
-    equipment_involved: [],
+    people_involved: "",
+    equipment_involved: "",
     date: "",
     time: ""
 };
@@ -83,7 +84,7 @@ const Paycheck = {
 
 const ShiftSchedule = {
     date: "",
-    employees: [],
+    employees: "",
     break: 0.0,
     total_hours: 0.0
 };
@@ -92,4 +93,19 @@ const GymLocation = {
     franchise_number: "",
     name: "",
     address: ""
+};
+
+module.exports = {
+    Member,
+    Worker,
+    Trainer,
+    Manager,
+    Receptionist,
+    Equipment,
+    WorkoutPlan,
+    IncidentReport,
+    RevenueReport,
+    Paycheck,
+    ShiftSchedule,
+    GymLocation
 };

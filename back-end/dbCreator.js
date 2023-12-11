@@ -29,29 +29,29 @@ function createDB() {
 
                 // Create member table
                 createTable("Member", "CREATE TABLE `gymdb`.`Member` (" +
-                "`member_id` CHAR(10) PRIMARY KEY," +
+                "`member_id` CHAR(8) PRIMARY KEY," +
                 "`name` CHAR(50)," +
                 "`phone_number` CHAR(15)," +
                 "`emergency_contact` CHAR(15)," +
                 "`address` CHAR(100)," +
-                "`credit_card` CHAR(16)," +
-                "`franchise_number` CHAR(10)," +
-                "`trainer_employee_id` CHAR(10)" +
+                "`credit_card` CHAR(20)," +
+                "`franchise_number` char(8)," +
+                "`trainer_employee_id` char(8)" +
                 ");");
 
                 // Create worker table
                 createTable("Worker", "CREATE TABLE `gymdb`.`Worker` (" +
-                "`employee_id` CHAR(10) PRIMARY KEY," +
+                "`employee_id` CHAR(8) PRIMARY KEY," +
                 "`name` CHAR(50)," +
                 "`phone_number` CHAR(15)," +
                 "`availability` CHAR(100)," +
                 "`emergency_contact` TEXT," +
-                "`franchise_number` CHAR(10)" +
+                "`franchise_number` char(8)" +
                 ");");
 
                 // Create trainer table
                 createTable("Trainer", "CREATE TABLE `gymdb`.`Trainer` (" +
-                "`employee_id` CHAR(10) PRIMARY KEY," +
+                "`employee_id` CHAR(8) PRIMARY KEY," +
                 "`schedule` CHAR(100)," +
                 "`clients` TEXT," +
                 "`specialization` CHAR(50)" +
@@ -59,17 +59,17 @@ function createDB() {
 
                 // Create manager table
                 createTable("Manager", "CREATE TABLE `gymdb`.`Manager` (" +
-                "`employee_id` CHAR(10) PRIMARY KEY" +
+                "`employee_id` CHAR(8) PRIMARY KEY" +
                 ");");
 
                 // Create receptionist table
                 createTable("Receptionist", "CREATE TABLE `gymdb`.`Receptionist` (" +
-                "`employee_id` CHAR(10) PRIMARY KEY" +
+                "`employee_id` char(8) PRIMARY KEY" +
                 ");");
 
                 // Create equipment table
                 createTable("Equipment", "CREATE TABLE `gymdb`.`Equipment` (" +
-                "`equipment_id` CHAR(10) PRIMARY KEY," +
+                "`equipment_id` char(8) PRIMARY KEY," +
                 "`equipment_condition` CHAR(50)," +
                 "`name` CHAR(50)," +
                 "`date_bought` DATE," +
@@ -78,8 +78,8 @@ function createDB() {
 
                 // Create workout plan table
                 createTable("WorkoutPlan", "CREATE TABLE `gymdb`.`WorkoutPlan` (" +
-                "`report_number` CHAR(10) PRIMARY KEY," +
-                "`employee_id` CHAR(10)," +
+                "`report_number` char(8) PRIMARY KEY," +
+                "`employee_id` char(8)," +
                 "`date_generated` DATE," +
                 "`days_of_the_week` CHAR(50)," +
                 "`frequency` CHAR(20)," +
@@ -88,7 +88,7 @@ function createDB() {
 
                 // Create incident report table
                 createTable("IncidentReport", "CREATE TABLE `gymdb`.`IncidentReport` (" +
-                "`report_number` CHAR(10) PRIMARY KEY," +
+                "`report_number` char(8) PRIMARY KEY," +
                 "`people_involved` TEXT," +
                 "`equipment_involved` TEXT," +
                 "`date` DATE," +
@@ -97,7 +97,7 @@ function createDB() {
 
                 // Create revenue report table
                 createTable("RevenueReport", "CREATE TABLE `gymdb`.`RevenueReport` (" +
-                "`reference_number` CHAR(10) PRIMARY KEY," +
+                "`reference_number` char(8) PRIMARY KEY," +
                 "`revenue_generated` DECIMAL(10, 2)," +
                 "`period` CHAR(50)," +
                 "`expenditure` DECIMAL(10, 2)" +
@@ -105,8 +105,8 @@ function createDB() {
 
                 // Create paycheck table
                 createTable("Paycheck", "CREATE TABLE `gymdb`.`Paycheck` (" +
-                "`reference_number` CHAR(10) PRIMARY KEY," +
-                "`employee_id` CHAR(10)," +
+                "`reference_number` char(8) PRIMARY KEY," +
+                "`employee_id` char(8)," +
                 "`period` CHAR(50)," +
                 "`hours_worked` DECIMAL(5, 2)," +
                 "`amount` DECIMAL(10, 2)," +
@@ -125,7 +125,7 @@ function createDB() {
 
                 // Create gym location table
                 createTable("GymLocation", "CREATE TABLE `gymdb`.`GymLocation` (" +
-                "`franchise_number` CHAR(10) PRIMARY KEY," +
+                "`franchise_number` char(8) PRIMARY KEY," +
                 "`name` CHAR(50)," +
                 "`address` CHAR(100)" +
                 ");");
