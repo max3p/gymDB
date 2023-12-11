@@ -30,9 +30,14 @@ const membersList = [
     for (let i = 0; i < membersList.length; i++) {
       const member = membersList[i];
       const row = table.insertRow();
-      row.insertCell(0).textContent = member.id;
-      row.insertCell(1).textContent = member.firstName;
-      row.insertCell(2).textContent = member.lastName;
+
+      // Add user icon to the first cell
+      const iconCell = row.insertCell(0);
+      iconCell.innerHTML = '<i class="glyphicon glyphicon-user" style="font-size:24px;"></i>';
+
+      row.insertCell(1).textContent = member.id;
+      row.insertCell(2).textContent = member.firstName;
+      row.insertCell(3).textContent = member.lastName;
     }
   });
   
