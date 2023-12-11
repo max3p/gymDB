@@ -69,12 +69,12 @@ api.addMember(newMember, (err) => {
 
 // Example of using deleteMember to delete a tuple in the database
 
-const memberIdToDelete = 96757037; //must specifiy id of member to delete
+const memberIdToDelete = 92909376; //must specifiy id of member to delete
 
 api.deleteMember(memberIdToDelete, (err, result) => {
     if (err) {
         console.error('Error:', err);
     } else {
-        console.log('Member deleted successfully');
+        console.log('\nMember deleted successfully');
     }
 });

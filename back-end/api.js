@@ -108,6 +108,98 @@ function deleteMember(memberId, callback) {
     });
 }
 
+// Retrieves a single worker from the database, returned as an object. Must specify employee_id as a parameter. 
+function getWorker(employee_id, callback) {
+    console.log('api.js: getWorker called');
+    const sql = `SELECT * FROM Worker WHERE employee_id = ${employee_id}`;
+  
+    db.executeQuery(sql, [], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+  
+        if (results.length === 0) {
+            return callback({ error: 'Worker not found' });
+        }
 
+        callback(null, results[0]);
+    });
+}
 
-module.exports = {getMember, getAllMembers, addMember, deleteMember};
+// Retrieves all workers from the database, returned as an array of objects. 
+function getAllWorkers(callback) {
+    console.log('api.js: getAllWorkers called');
+    const sql = 'SELECT * FROM Worker';
+  
+    db.executeQuery(sql, [], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+  
+        if (results.length === 0) {
+            return callback({ error: 'No Workers found' });
+        }
+  
+        callback(null, results);
+    });
+}
+
+// Inserts a new worker into the database, must input a Worker object as a parameter
+// Generates a random employee_id starting with 3, returns the ID
+function addWorker(workerObject, callback) {
+    console.log('api.js: addWorker called');
+
+    // generate random ID
+    const randomEmployeeId = '3' + generateRandomID(7);
+
+    const sql = `
+        INSERT INTO Worker 
+        (employee_id, name, phone_number, availability, emergency_contact)
+        VALUES (?, ?, ?, ?, ?)
+    `;
+
+    const values = [
+        randomEmployeeId,
+        workerObject.name,
+        workerObject.phone_number,
+        workerObject.availability,
+        workerObject.emergency_contact,
+    ];
+
+    db.executeQuery(sql, values, (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        const employeeId = results.insertId;
+        callback(null, { employeeId });
+    });
+}
+
+// Deletes a worker from the database based on the employee_id, must specify employee_id as parameter
+function deleteWorker(employeeId, callback) {
+    console.log('api.js: deleteWorker called');
+
+    const sql = `DELETE FROM Worker WHERE employee_id = ?`;
+
+    db.executeQuery(sql, [employeeId], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        // Check if any rows were affected to determine if the worker was deleted successfully
+        const isDeleted = results.affectedRows > 0;
+
+        if (isDeleted) {
+            callback(null, { message: 'Worker deleted successfully' });
+        } else {
+            callback({ error: 'Worker not found or could not be deleted' });
+        }
+    });
+}
+
+module.exports = { 
+    getWorker, getAllWorkers, addWorker, deleteWorker,
+    getMember, getAllMembers, addMember, deleteMember
+};
+
