@@ -78,3 +78,20 @@ api.deleteMember(memberIdToDelete, (err, result) => {
         console.log('\nMember deleted successfully');
     }
 });
+
+// Example of using editTuple function to update a specific attribute of a tuple in the database
+
+// Specify the parameters for the update
+const entityIdToUpdate = 2; // Specify the ID of the tuple to update
+const attributeToUpdate = 'phone_number'; // Specify the attribute to update
+const newValueToUpdate = '555-1234'; // Specify the new value for the attribute
+
+// Call the editTuple function to perform the update
+api.editTuple('Member', entityIdToUpdate, attributeToUpdate, newValueToUpdate, (err, result) => {
+    if (err) {
+        console.error('Error:', err);
+    } else {
+        console.log('\neditTuple() Result:');
+        console.log(result.message);
+    }
+});

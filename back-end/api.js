@@ -16,6 +16,34 @@ function generateRandomID(length) {
     return result;
 }
 
+// Edits a specific attribute of a tuple in the database based on entityName, id, attributeName, and newValue
+function editTuple(entityName, id, attributeName, newValue, callback) {
+    console.log('api.js: editTuple called');
+
+    const sql = `
+        UPDATE ${entityName} 
+        SET ${attributeName} = ?
+        WHERE ${entityName}_id = ?
+    `;
+
+    const values = [newValue, id];
+
+    db.executeQuery(sql, values, (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        // Check if any rows were affected to determine if the tuple was updated successfully
+        const isUpdated = results.affectedRows > 0;
+
+        if (isUpdated) {
+            callback(null, { message: `${entityName} updated successfully` });
+        } else {
+            callback({ error: `${entityName} not found or could not be updated` });
+        }
+    });
+}
+
 /* ================================== MEMBER ================================== */
 
 // Retrieves a single member from the database, returned as an object. Must specify member_id as a parameters. 
@@ -479,6 +507,7 @@ function deleteWorkoutPlan(reportNumber, callback) {
 }
 
 module.exports = { 
+    editTuple,
     getMember, getAllMembers, addMember, deleteMember,
     getWorker, getAllWorkers, addWorker, deleteWorker,
     getEquipment, getAllEquipment, addEquipment, deleteEquipment,
