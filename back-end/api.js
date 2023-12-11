@@ -293,9 +293,106 @@ function deleteEquipment(equipmentId, callback) {
     });
 }
 
+/* ================================== INCIDENTREPORT ================================== */
+
+// Retrieves a single incident report from the database, returned as an object. Must specify report_number as a parameter. 
+function getIncidentReport(report_number, callback) {
+    console.log('api.js: getIncidentReport called');
+    const sql = `SELECT * FROM IncidentReport WHERE report_number = ${report_number}`;
+  
+    db.executeQuery(sql, [], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+  
+        if (results.length === 0) {
+            return callback({ error: 'Incident Report not found' });
+        }
+
+        callback(null, results[0]);
+    });
+}
+
+// Retrieves all incident reports from the database, returned as an array of objects. 
+function getAllIncidentReports(callback) {
+    console.log('api.js: getAllIncidentReports called');
+    const sql = 'SELECT * FROM IncidentReport';
+  
+    db.executeQuery(sql, [], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+  
+        if (results.length === 0) {
+            return callback({ error: 'No Incident Reports found' });
+        }
+  
+        callback(null, results);
+    });
+}
+
+// Inserts a new incident report into the database, must input an IncidentReport object as a parameter
+// Generates a random report_number starting with 1, returns the ID
+function addIncidentReport(incidentReportObject, callback) {
+    console.log('api.js: addIncidentReport called');
+
+    // generate random ID
+    const randomReportNumber = '1' + generateRandomID(7);
+
+    const sql = `
+        INSERT INTO IncidentReport 
+        (report_number, people_involved, equipment_involved, date, time)
+        VALUES (?, ?, ?, ?, ?)
+    `;
+
+    const values = [
+        randomReportNumber,
+        incidentReportObject.people_involved,
+        incidentReportObject.equipment_involved,
+        incidentReportObject.date,
+        incidentReportObject.time,
+    ];
+
+    db.executeQuery(sql, values, (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        const reportNumber = results.insertId;
+        callback(null, { reportNumber });
+    });
+}
+
+// Deletes an incident report from the database based on the report_number, must specify report_number as parameter
+function deleteIncidentReport(reportNumber, callback) {
+    console.log('api.js: deleteIncidentReport called');
+
+    const sql = `DELETE FROM IncidentReport WHERE report_number = ?`;
+
+    db.executeQuery(sql, [reportNumber], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        // Check if any rows were affected to determine if the incident report was deleted successfully
+        const isDeleted = results.affectedRows > 0;
+
+        if (isDeleted) {
+            callback(null, { message: 'Incident Report deleted successfully' });
+        } else {
+            callback({ error: 'Incident Report not found or could not be deleted' });
+        }
+    });
+}
+
+/* ================================== WORKOUTPLAN ================================== */
+
+
+
 module.exports = { 
     getMember, getAllMembers, addMember, deleteMember,
     getWorker, getAllWorkers, addWorker, deleteWorker,
-    getEquipment, getAllEquipment, addEquipment, deleteEquipment
+    getEquipment, getAllEquipment, addEquipment, deleteEquipment,
+    getIncidentReport, getAllIncidentReports, addIncidentReport, deleteIncidentReport
 };
 
