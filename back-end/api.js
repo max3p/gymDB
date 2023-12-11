@@ -387,12 +387,102 @@ function deleteIncidentReport(reportNumber, callback) {
 
 /* ================================== WORKOUTPLAN ================================== */
 
+// Retrieves a single workout plan from the database, returned as an object. Must specify report_number as a parameter. 
+function getWorkoutPlan(report_number, callback) {
+    console.log('api.js: getWorkoutPlan called');
+    const sql = `SELECT * FROM WorkoutPlan WHERE report_number = ${report_number}`;
+  
+    db.executeQuery(sql, [], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+  
+        if (results.length === 0) {
+            return callback({ error: 'Workout Plan not found' });
+        }
 
+        callback(null, results[0]);
+    });
+}
+
+// Retrieves all workout plans from the database, returned as an array of objects. 
+function getAllWorkoutPlans(callback) {
+    console.log('api.js: getAllWorkoutPlans called');
+    const sql = 'SELECT * FROM WorkoutPlan';
+  
+    db.executeQuery(sql, [], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+  
+        if (results.length === 0) {
+            return callback({ error: 'No Workout Plans found' });
+        }
+  
+        callback(null, results);
+    });
+}
+
+// Inserts a new workout plan into the database, must input a WorkoutPlan object as a parameter
+// Generates a random report_number starting with 7, returns the ID
+function addWorkoutPlan(workoutPlanObject, callback) {
+    console.log('api.js: addWorkoutPlan called');
+
+    // generate random ID
+    const randomReportNumber = '7' + generateRandomID(7);
+
+    const sql = `
+        INSERT INTO WorkoutPlan 
+        (report_number, employee_id, date_generated, days_of_the_week, frequency, exercises)
+        VALUES (?, ?, ?, ?, ?, ?)
+    `;
+
+    const values = [
+        randomReportNumber,
+        workoutPlanObject.employee_id,
+        workoutPlanObject.date_generated,
+        workoutPlanObject.days_of_the_week,
+        workoutPlanObject.frequency,
+        workoutPlanObject.exercises,
+    ];
+
+    db.executeQuery(sql, values, (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        const reportNumber = results.insertId;
+        callback(null, { reportNumber });
+    });
+}
+
+// Deletes a workout plan from the database based on the report_number, must specify report_number as parameter
+function deleteWorkoutPlan(reportNumber, callback) {
+    console.log('api.js: deleteWorkoutPlan called');
+
+    const sql = `DELETE FROM WorkoutPlan WHERE report_number = ?`;
+
+    db.executeQuery(sql, [reportNumber], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        // Check if any rows were affected to determine if the workout plan was deleted successfully
+        const isDeleted = results.affectedRows > 0;
+
+        if (isDeleted) {
+            callback(null, { message: 'Workout Plan deleted successfully' });
+        } else {
+            callback({ error: 'Workout Plan not found or could not be deleted' });
+        }
+    });
+}
 
 module.exports = { 
     getMember, getAllMembers, addMember, deleteMember,
     getWorker, getAllWorkers, addWorker, deleteWorker,
     getEquipment, getAllEquipment, addEquipment, deleteEquipment,
-    getIncidentReport, getAllIncidentReports, addIncidentReport, deleteIncidentReport
+    getIncidentReport, getAllIncidentReports, addIncidentReport, deleteIncidentReport,
+    getWorkoutPlan, getAllWorkoutPlans, addWorkoutPlan, deleteWorkoutPlan
 };
 
