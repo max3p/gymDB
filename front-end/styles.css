@@ -297,3 +297,7 @@ input {
     background-color: #aa1504;
     color: white;
   }
+
+  .clickable-icon {
+    cursor: pointer;
+  }
