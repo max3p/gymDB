@@ -51,7 +51,7 @@ api.getAllMembers((err, membersArray) => {
 
 // first create a new Member object
 const newMember = {
-    name: 'John Doe',
+    name: 'Sharoon',
     phone_number: '123-456-7890',
     emergency_contact: '123-444-4456',
     address: '123 Main St, City',
@@ -69,7 +69,7 @@ api.addMember(newMember, (err) => {
 
 // Example of using deleteMember to delete a tuple in the database
 
-const memberIdToDelete = 92909376; //must specifiy id of member to delete
+const memberIdToDelete = 92267122; //must specifiy id of member to delete
 
 api.deleteMember(memberIdToDelete, (err, result) => {
     if (err) {

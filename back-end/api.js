@@ -199,7 +199,7 @@ function deleteWorker(employeeId, callback) {
 }
 
 module.exports = { 
-    getWorker, getAllWorkers, addWorker, deleteWorker,
-    getMember, getAllMembers, addMember, deleteMember
+    getMember, getAllMembers, addMember, deleteMember,
+    getWorker, getAllWorkers, addWorker, deleteWorker
 };
 
