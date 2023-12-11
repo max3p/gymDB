@@ -15,7 +15,8 @@ function generateRandomID(length) {
     }
     return result;
 }
-  
+
+/* ================================== MEMBER ================================== */
 
 // Retrieves a single member from the database, returned as an object. Must specify member_id as a parameters. 
 function getMember(member_id, callback) {
@@ -108,6 +109,8 @@ function deleteMember(memberId, callback) {
     });
 }
 
+/* ================================== WORKER ================================== */
+
 // Retrieves a single worker from the database, returned as an object. Must specify employee_id as a parameter. 
 function getWorker(employee_id, callback) {
     console.log('api.js: getWorker called');
@@ -198,8 +201,101 @@ function deleteWorker(employeeId, callback) {
     });
 }
 
+/* ================================== EQUIPMENT ================================== */
+
+// Retrieves a single equipment from the database, returned as an object. Must specify equipment_id as a parameter. 
+function getEquipment(equipment_id, callback) {
+    console.log('api.js: getEquipment called');
+    const sql = `SELECT * FROM Equipment WHERE equipment_id = ${equipment_id}`;
+  
+    db.executeQuery(sql, [], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+  
+        if (results.length === 0) {
+            return callback({ error: 'Equipment not found' });
+        }
+
+        callback(null, results[0]);
+    });
+}
+
+// Retrieves all equipment from the database, returned as an array of objects. 
+function getAllEquipment(callback) {
+    console.log('api.js: getAllEquipment called');
+    const sql = 'SELECT * FROM Equipment';
+  
+    db.executeQuery(sql, [], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+  
+        if (results.length === 0) {
+            return callback({ error: 'No Equipment found' });
+        }
+  
+        callback(null, results);
+    });
+}
+
+// Inserts a new equipment into the database, must input an Equipment object as a parameter
+// Generates a random equipment_id starting with 4, returns the ID
+function addEquipment(equipmentObject, callback) {
+    console.log('api.js: addEquipment called');
+
+    // generate random ID
+    const randomEquipmentId = '4' + generateRandomID(7);
+
+    const sql = `
+        INSERT INTO Equipment 
+        (equipment_id, equipment_condition, name, date_bought, maintenance_history)
+        VALUES (?, ?, ?, ?, ?)
+    `;
+
+    const values = [
+        randomEquipmentId,
+        equipmentObject.equipment_condition,
+        equipmentObject.name,
+        equipmentObject.date_bought,
+        equipmentObject.maintenance_history,
+    ];
+
+    db.executeQuery(sql, values, (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        const equipmentId = results.insertId;
+        callback(null, { equipmentId });
+    });
+}
+
+// Deletes equipment from the database based on the equipment_id, must specify equipment_id as parameter
+function deleteEquipment(equipmentId, callback) {
+    console.log('api.js: deleteEquipment called');
+
+    const sql = `DELETE FROM Equipment WHERE equipment_id = ?`;
+
+    db.executeQuery(sql, [equipmentId], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        // Check if any rows were affected to determine if the equipment was deleted successfully
+        const isDeleted = results.affectedRows > 0;
+
+        if (isDeleted) {
+            callback(null, { message: 'Equipment deleted successfully' });
+        } else {
+            callback({ error: 'Equipment not found or could not be deleted' });
+        }
+    });
+}
+
 module.exports = { 
     getMember, getAllMembers, addMember, deleteMember,
-    getWorker, getAllWorkers, addWorker, deleteWorker
+    getWorker, getAllWorkers, addWorker, deleteWorker,
+    getEquipment, getAllEquipment, addEquipment, deleteEquipment
 };
 
