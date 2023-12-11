@@ -64,7 +64,47 @@ function getTuple(entityName, id, callback) {
     });
 }
 
+// Retrieves all tuples from the database, returned as an array of objects.
+// Must specify entityName as a parameter.
+function getAllTuples(entityName, callback) {
+    console.log(`api.js: getAllTuples called for ${entityName}`);
+    const sql = `SELECT * FROM ${entityName}`;
 
+    db.executeQuery(sql, [], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        if (results.length === 0) {
+            return callback({ error: `No ${entityName} found` });
+        }
+
+        callback(null, results);
+    });
+}
+
+// Deletes a tuple from the database based on the entityName and id.
+// Must specify entityName and id as parameters.
+function deleteTuple(entityName, entityId, callback) {
+    console.log(`api.js: deleteTuple called for ${entityName}`);
+
+    const sql = `DELETE FROM ${entityName} WHERE ${entityName}_id = ?`;
+
+    db.executeQuery(sql, [entityId], (err, results) => {
+        if (err) {
+            return callback({ error: 'Internal Server Error' });
+        }
+
+        // Check if any rows were affected to determine if the tuple was deleted successfully
+        const isDeleted = results.affectedRows > 0;
+
+        if (isDeleted) {
+            callback(null, { message: `${entityName} deleted successfully` });
+        } else {
+            callback({ error: `${entityName} not found or could not be deleted` });
+        }
+    });
+}
 
 
 
@@ -536,7 +576,7 @@ function deleteWorkoutPlan(reportNumber, callback) {
 }
 
 module.exports = { 
-    editTuple, getTuple, 
+    editTuple, getTuple, getAllTuples, deleteTuple,
     getMember, getAllMembers, addMember, deleteMember,
     getWorker, getAllWorkers, addWorker, deleteWorker,
     getEquipment, getAllEquipment, addEquipment, deleteEquipment,
