@@ -1,6 +1,6 @@
 /*
 example_api_usage.js
-Examples functions to retrieve/store data using api.js
+Examples functions to retrieve/store data using api.js 
 */
 
 const api = require("../back-end/api.js");
