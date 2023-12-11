@@ -329,7 +329,7 @@ table th {
   
   /* Style for the first row of the table */
   table tr.first-row {
-    background-color: #e74c3c; /* Different color for the first row */
+    background-color: #737b7f; /* Different color for the first row */
   }
   
   /* Add this if you want to remove the background color from the first cell in the first row */
