@@ -101,91 +101,179 @@ const membersList = [
       row.insertCell(2).textContent = member.firstName;
       row.insertCell(3).textContent = member.lastName;
     }
-  });
-  
-  trashIcon.addEventListener('click', function () {
-    // Open a confirmation modal before removing the member
-    const confirmationModal = document.getElementById('confirmationModal');
-    confirmationModal.style.display = 'block';
-  
-    // Handle the logic to remove the member if confirmed
-    const confirmButton = document.getElementById('confirmRemoveButton');
-    confirmButton.addEventListener('click', function () {
-      // Handle logic to remove the member
-      console.log('Remove member:', member);
-  
-      // Close the confirmation modal
-      confirmationModal.style.display = 'none';
-    });
-  
-    // Handle the logic to cancel the removal
-    const cancelButton = document.getElementById('cancelRemoveButton');
-    cancelButton.addEventListener('click', function () {
-      // Close the confirmation modal
-      confirmationModal.style.display = 'none';
-    });
-  });
 
-  var suModal = document.getElementById('id21');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == suModal) {
-        suModal.style.display = "none";
-    }
-};
-
-  
-function navigateToPage() {
-
-    window.location.href = "login.html";
-  }
-  function openNav() {
-    document.getElementById("myNav").style.width = "100%";
-  }
-  
-  function closeNav() {
-    document.getElementById("myNav").style.width = "0%";
-  }
-// Assuming you have an API object that contains the addMember function
-
-  // Find the form in your HTML (add an ID to the form if not present)
-const signupForm = document.querySelector('#signupForm');
-
-// Listen for the form submission event
-signupForm.addEventListener('submit', function (event) {
-    // Prevent the default form submission behavior
-    event.preventDefault();
-
-    console.log("submit button pressed");
-
-    // Get user input from the form fields
-    const name = document.querySelector('input[name="Name"]').value;
-    const phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
-    const address = document.querySelector('input[name="Address"]').value;
-    const card = document.querySelector('input[name="Card"]').value;
-    const ePhone = document.querySelector('input[name="ePhone"]').value;
-
-    // Create a new member object
-    const newMember = {
-        name: name,
-        phone_number: phoneNumber,
-        emergency_contact: ePhone,
-        address: address,
-        card: card
-        // Add other properties as needed
+    trashIcon.addEventListener('click', function () {
+        // Open a confirmation modal before removing the member
+        const confirmationModal = document.getElementById('confirmationModal');
+        confirmationModal.style.display = 'block';
+      
+        // Handle the logic to remove the member if confirmed
+        const confirmButton = document.getElementById('confirmRemoveButton');
+        confirmButton.addEventListener('click', function () {
+          // Handle logic to remove the member
+          console.log('Remove member:', member);
+      
+          // Close the confirmation modal
+          confirmationModal.style.display = 'none';
+        });
+      
+        // Handle the logic to cancel the removal
+        const cancelButton = document.getElementById('cancelRemoveButton');
+        cancelButton.addEventListener('click', function () {
+          // Close the confirmation modal
+          confirmationModal.style.display = 'none';
+        });
+      });
+    
+      var suModal = document.getElementById('id21');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == suModal) {
+            suModal.style.display = "none";
+        }
     };
+    
+      
+    function navigateToPage() {
+    
+        window.location.href = "login.html";
+      }
+      function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+      }
+      
+      function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+      }
+    // Assuming you have an API object that contains the addMember function
+    
+      // Find the form in your HTML (add an ID to the form if not present)
+    const signupForm = document.querySelector('#signupForm');
+    
+    // Listen for the form submission event
+    signupForm.addEventListener('submit', function (event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+    
+        console.log("submit button pressed");
+    
+        // Get user input from the form fields
+        const name = document.querySelector('input[name="Name"]').value;
+        const phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
+        const address = document.querySelector('input[name="Address"]').value;
+        const card = document.querySelector('input[name="Card"]').value;
+        const ePhone = document.querySelector('input[name="ePhone"]').value;
+    
+        // Create a new member object
+        const newMember = {
+            name: name,
+            phone_number: phoneNumber,
+            emergency_contact: ePhone,
+            address: address,
+            card: card
+            // Add other properties as needed
+        };
+    
+        // then call addMember to insert the new member into the db
+        fetch(`${baseURL}/member`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newMember),
+        })
+          .then((response) => response.json())
+          .then(() => console.log('\nInserted new Member into the db'))
+          .catch((error) => console.error('Error:', error));
+    });
+    
+    
+  });
+  
+//   trashIcon.addEventListener('click', function () {
+//     // Open a confirmation modal before removing the member
+//     const confirmationModal = document.getElementById('confirmationModal');
+//     confirmationModal.style.display = 'block';
+  
+//     // Handle the logic to remove the member if confirmed
+//     const confirmButton = document.getElementById('confirmRemoveButton');
+//     confirmButton.addEventListener('click', function () {
+//       // Handle logic to remove the member
+//       console.log('Remove member:', member);
+  
+//       // Close the confirmation modal
+//       confirmationModal.style.display = 'none';
+//     });
+  
+//     // Handle the logic to cancel the removal
+//     const cancelButton = document.getElementById('cancelRemoveButton');
+//     cancelButton.addEventListener('click', function () {
+//       // Close the confirmation modal
+//       confirmationModal.style.display = 'none';
+//     });
+//   });
 
-    // then call addMember to insert the new member into the db
-    fetch(`${baseURL}/member`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newMember),
-    })
-      .then((response) => response.json())
-      .then(() => console.log('\nInserted new Member into the db'))
-      .catch((error) => console.error('Error:', error));
-});
+//   var suModal = document.getElementById('id21');
+
+// // When the user clicks anywhere outside of the modal, close it
+// window.onclick = function (event) {
+//     if (event.target == suModal) {
+//         suModal.style.display = "none";
+//     }
+// };
+
+  
+// function navigateToPage() {
+
+//     window.location.href = "login.html";
+//   }
+//   function openNav() {
+//     document.getElementById("myNav").style.width = "100%";
+//   }
+  
+//   function closeNav() {
+//     document.getElementById("myNav").style.width = "0%";
+//   }
+// // Assuming you have an API object that contains the addMember function
+
+//   // Find the form in your HTML (add an ID to the form if not present)
+// const signupForm = document.querySelector('#signupForm');
+
+// // Listen for the form submission event
+// signupForm.addEventListener('submit', function (event) {
+//     // Prevent the default form submission behavior
+//     event.preventDefault();
+
+//     console.log("submit button pressed");
+
+//     // Get user input from the form fields
+//     const name = document.querySelector('input[name="Name"]').value;
+//     const phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
+//     const address = document.querySelector('input[name="Address"]').value;
+//     const card = document.querySelector('input[name="Card"]').value;
+//     const ePhone = document.querySelector('input[name="ePhone"]').value;
+
+//     // Create a new member object
+//     const newMember = {
+//         name: name,
+//         phone_number: phoneNumber,
+//         emergency_contact: ePhone,
+//         address: address,
+//         card: card
+//         // Add other properties as needed
+//     };
+
+//     // then call addMember to insert the new member into the db
+//     fetch(`${baseURL}/member`, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(newMember),
+//     })
+//       .then((response) => response.json())
+//       .then(() => console.log('\nInserted new Member into the db'))
+//       .catch((error) => console.error('Error:', error));
+// });
 
