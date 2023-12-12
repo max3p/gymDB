@@ -11,7 +11,7 @@ var imageUrl = "./images/user-icon.png";
 async function fetchAllData() {
     try {
         // Set up variables
-        const entityNameToRetrieve = 'Worker';
+        const entityNameToRetrieve = 'Employee';
         const response = await fetch(`${baseURL}/${entityNameToRetrieve}`);
         const staffList = await response.json();
         console.log(`Data retrieved from database`);
@@ -72,11 +72,10 @@ async function fetchAllData() {
 async function expand(employeeID) {
     console.log("Expanding employee ID:", employeeID);
 
-    const entityName = 'Worker';
+    const entityName = 'Employee';
     fetch(`${baseURL}/${entityName}/${employeeID}`)
         .then((response) => response.json())
         .then((tupleObject) => {
-            console.log('\ngetTuple() Result:');
             openModal(tupleObject.employee_id);
         })
         .catch((error) => console.error('Error:', error));
