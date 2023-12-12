@@ -23,7 +23,7 @@ button {
   padding: 10px 10px;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 60%;
   border-radius: 5px;
   font-size: 14px;
   font-weight: bold;
@@ -218,7 +218,23 @@ span.forgot {
   border-radius: 10px;
 }
 
+.modal-buttons {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
 
+.modal-button {
+  background-color: #aa1504;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 30px; 
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
 
 
 

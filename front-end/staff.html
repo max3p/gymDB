@@ -47,17 +47,23 @@
                 <img src="./images/user-icon.png" alt="Employee Image">
             </div>
 
-            <!-- Data columns -->
+            <!-- Data -->
             <div class="modal-data">
                 <p id="employeeNameInModal"></p>
                 <p id="employeeIdInModal"></p>
                 <p id="employeePhoneInModal"></p>
                 <p id="employeeAvInModal"></p>
                 <p id="employeeEmergencyCInModal"></p>
+
+                <!-- Edit and Delete buttons -->
+                <div class="modal-buttons">
+                    <button class="modal-button" onclick="editEmployee()">Edit</button>
+                    <button class="modal-button" onclick="deleteEmployee()">Delete</button>
+                </div>
+
             </div>
         </div>
     </div>
-
 
     <!-- Fetch staff data -->
     <script src="staff.js"></script>
