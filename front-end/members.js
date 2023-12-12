@@ -82,4 +82,27 @@ for (let i = 0; i < membersList.length; i++) {
         row.insertCell(3).textContent = member.lastName;
       }
   });
+
+  var suModal = document.getElementById('id21');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    } else if (event.target == sModal) {
+        sModal.style.display = "none";
+    } else if (event.target == suModal) {
+        suModal.style.display = "none";
+    }
+};
+function navigateToPage() {
+
+    window.location.href = "login.html";
+  }
+  function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+  }
   
+  function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+  }

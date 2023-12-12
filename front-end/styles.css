@@ -148,11 +148,14 @@ span.psw {
     padding-top: 60px;
 }
 
+/* Modal Content/Box */
 .signUpModal-content {
     background-color: #fefefe;
-    margin: 5% auto 15% auto;
+    margin: 5% auto; /* Removed the bottom margin */
     border: 1px solid #888;
-    width: 80%;
+    width: 90%;
+    max-height: 80%; /* Set a maximum height for the modal */
+    overflow-y: auto; /* Enable vertical scrolling if the content is taller than the modal */
 }
 
 /* Position the login button in the top-right corner */
@@ -364,4 +367,6 @@ table th {
     cursor: pointer;
     border-radius: 5px;
   }
+
+
   
