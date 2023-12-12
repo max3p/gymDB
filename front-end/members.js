@@ -1,4 +1,5 @@
-//const api = require("../back-end/api.js");
+const baseURL = 'http://localhost:3000/api'; 
+
 // Sample list of objects representing members
 const membersList = [
     {
@@ -156,6 +157,8 @@ signupForm.addEventListener('submit', function (event) {
     // Prevent the default form submission behavior
     event.preventDefault();
 
+    console.log("submit button pressed");
+
     // Get user input from the form fields
     const name = document.querySelector('input[name="Name"]').value;
     const phoneNumber = document.querySelector('input[name="phoneNumber"]').value;
@@ -173,13 +176,16 @@ signupForm.addEventListener('submit', function (event) {
         // Add other properties as needed
     };
 
-    // Call addMember to insert the new member into the db
-    api.addMember(newMember, (err) => {
-        if (err) {
-            console.error('Error:', err);
-        } else {
-            console.log('\nInserted new Member into the db');
-        }
-    });
+    // then call addMember to insert the new member into the db
+    fetch(`${baseURL}/member`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newMember),
+    })
+      .then((response) => response.json())
+      .then(() => console.log('\nInserted new Member into the db'))
+      .catch((error) => console.error('Error:', error));
 });
 
