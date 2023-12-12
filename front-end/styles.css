@@ -15,7 +15,49 @@ header {
     font-weight: bold;
 }
 
-/* Full-width input fields */
+/* ================================ login.html ================================ */
+
+.login-btn {
+  position: fixed;
+  top: 30px;
+  right: 40px;
+  background-color: #e2e2e2;
+  color: rgb(46, 46, 46);
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.login-btn:hover {
+  opacity: 0.8;
+}
+
+/* Login modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+/* Login Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  width: 80%;
+}
+
 input[type="text"],
 input[type="password"] {
     width: 100%;
@@ -26,58 +68,114 @@ input[type="password"] {
     box-sizing: border-box;
 }
 
+.container {
+  padding: 16px;
+}
+
+/* Sign up button*/
+.signUp-btn {
+  color: white;
+}
+
+/* Login modal cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Forgot password */
+span.forgot {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Signup Modal Content/Box */
+.signUpModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+.signUpModal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  border: 1px solid #888;
+  width: 90%;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.signUp-btn:hover,
+.signUp-btn:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* ================================ staffMenu.html ================================ */
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.menu-content a {
+  display: block;
+  padding: 10px;
+  margin: 10px;
+  height: 30px;
+  width: 200px;
+  line-height: 30px;
+  background-color: #ddd;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 20px;
+  color: #555;
+  text-decoration: none;
+}
+
+.menu-content a:hover {
+  background-color: #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================ ETC ================================ */
+
 /* Set a style for all buttons */
 button {
-    background-color: #aa1504;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+  background-color: #aa1504;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
 
 button:hover {
-    opacity: 0.8;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-}
-
-.container {
-    padding: 16px;
-}
-
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
-
-/* The Modal (background) */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto;
-    border: 1px solid #888;
-    width: 80%;
+  opacity: 0.8;
 }
 
 /* The Close Button (x) */
@@ -96,15 +194,7 @@ span.psw {
     cursor: pointer;
 }
 
-.signUp-btn {
-    color: white;
-}
 
-.signUp-btn:hover,
-.signUp-btn:focus {
-    color: red;
-    cursor: pointer;
-}
 
 /* Add Zoom Animation */
 .animate {
@@ -134,48 +224,9 @@ span.psw {
     width: 80%;
 }
 
-.signUpModal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
-}
 
-/* Modal Content/Box */
-.signUpModal-content {
-    background-color: #fefefe;
-    margin: 5% auto; /* Removed the bottom margin */
-    border: 1px solid #888;
-    width: 90%;
-    max-height: 80%; /* Set a maximum height for the modal */
-    overflow-y: auto; /* Enable vertical scrolling if the content is taller than the modal */
-}
 
-/* Position the login button in the top-right corner */
-.login-btn {
-    position: fixed;
-    top: 30px;
-    right: 40px;
-    background-color: #e2e2e2;
-    color: rgb(46, 46, 46);
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-}
 
-.login-btn:hover {
-    opacity: 0.8;
-}
 
 label[for="signUpLabel"] {
     font-weight: bold;
@@ -199,33 +250,6 @@ input {
     display: block;
     margin-bottom: 10px;
     padding: 5px;
-}
-
-/* Staff Menu */
-.menu-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-}
-
-.menu-content a {
-  display: block;
-  padding: 10px;
-  margin: 10px;
-  height: 30px;
-  width: 200px;
-  line-height: 30px;
-  background-color: #ddd;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 20px;
-  color: #555;
-  text-decoration: none;
-}
-
-.menu-content a:hover {
-  background-color: #ccc;
 }
 
   /* Member table style index.html */
