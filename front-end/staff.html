@@ -26,7 +26,7 @@
     <!-- Return and Add New buttons -->
     <div class="add-new-container">
         <button class="return-main-menu" onclick="redirectToMenu()" style="width:auto;">← Return to Main Menu</button>
-        <button onclick="AddNew()">Add New</button>
+        <button onclick="openAddNewModal()">Add New</button>
     </div>
 
     <script>
@@ -44,7 +44,7 @@
     <!-- Expand Modal -->
     <div id="expandModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeModal('expandModal')">&times;</span>
 
             <!-- Image on the left -->
             <div class="modal-image">
@@ -66,6 +66,19 @@
                 </div>
 
             </div>
+        </div>
+    </div>
+
+    <!-- Add New Modal -->
+    <div id="addNewModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addNewModal')">&times;</span>
+
+            <!-- Data -->
+            <div class="modal-data">
+                <p id="text"></p>
+            </div>
+
         </div>
     </div>
 

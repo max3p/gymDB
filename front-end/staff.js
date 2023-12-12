@@ -76,13 +76,13 @@ async function expand(employeeID) {
     fetch(`${baseURL}/${entityName}/${employeeID}`)
         .then((response) => response.json())
         .then((tupleObject) => {
-            openModal(tupleObject);
+            openExpandModal(tupleObject);
         })
         .catch((error) => console.error('Error:', error));
 }
 
-// Function to open modal and display employee ID
-function openModal(employeeObject) {
+// Function to open expand modal and display employee ID
+function openExpandModal(employeeObject) {
     var modal = document.getElementById("expandModal");
     var employeeIdInModal = document.getElementById("employeeIdInModal");
 
@@ -97,17 +97,27 @@ function openModal(employeeObject) {
     modal.style.display = "block";
 }
 
-// Function to close the modal
-function closeModal() {
-    var modal = document.getElementById("expandModal");
+function openAddNewModal() {
+    var modal = document.getElementById("addNewModal");
+
+    // Display the modal
+    modal.style.display = "block";
+}
+
+// Function to close a modal
+function closeModal(modalName) {
+    var modal = document.getElementById(modalName);
     modal.style.display = "none";
 }
 
-// Close the modal if the user clicks outside of it
+// Close all modals if the user clicks outside of it
 window.onclick = function (event) {
     var modal = document.getElementById("expandModal");
+    var modal2 = document.getElementById("addNewModal");
     if (event.target == modal) {
         modal.style.display = "none";
+    }else if(event.target == modal2){
+        modal2.style.display = "none";
     }
 };
 
