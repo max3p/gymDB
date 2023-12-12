@@ -6,7 +6,6 @@ Contains all functions for retrieving/storing data in the db
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./dbDriver');
-
 const app = express();
 const port = 3000; 
 
