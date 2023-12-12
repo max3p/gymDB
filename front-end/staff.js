@@ -76,18 +76,22 @@ async function expand(employeeID) {
     fetch(`${baseURL}/${entityName}/${employeeID}`)
         .then((response) => response.json())
         .then((tupleObject) => {
-            openModal(tupleObject.employee_id);
+            openModal(tupleObject);
         })
         .catch((error) => console.error('Error:', error));
 }
 
 // Function to open modal and display employee ID
-function openModal(employeeId) {
+function openModal(employeeObject) {
     var modal = document.getElementById("expandModal");
     var employeeIdInModal = document.getElementById("employeeIdInModal");
 
-    // Set the employee ID in the modal content
-    employeeIdInModal.textContent = "Employee ID: " + employeeId;
+    // Set the employee data in the modal content
+    employeeNameInModal.textContent = "Name: " + employeeObject.name;
+    employeeIdInModal.textContent = "Employee ID: " + employeeObject.employee_id;
+    employeePhoneInModal.textContent = "Phone number: " + employeeObject.phone_number;
+    employeeAvInModal.textContent = "Availability: " + employeeObject.availability;
+    employeeEmergencyCInModal.textContent = "Emergency Contact: " + employeeObject.emergency_contact;
 
     // Display the modal
     modal.style.display = "block";
