@@ -98,6 +98,16 @@ document.addEventListener('DOMContentLoaded', function () {
     row.insertCell(3).textContent = member.lastName;
   }
 
+  function openEditModal() {
+    document.getElementById('editModal').style.display = 'block';
+  }
+
+  function submitEditForm() {
+    // Add logic to handle the edit form submission
+    // Close the edit modal
+    document.getElementById('editModal').style.display = 'none';
+  }
+
   // Event handler for the confirm button
   function onConfirm() {
     // Handle logic to remove the member

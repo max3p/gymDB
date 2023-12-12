@@ -9,6 +9,16 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="members.js"></script>
+  <style>
+    .modal-actions {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+    .edit-modal {
+      display: none;
+    }
+  </style>
   <title>Test App</title>
 </head>
 <body>
@@ -17,6 +27,9 @@
   <div class="modal fade" id="memberModal" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
+        <div class="modal-actions">
+          <button type="button" class="edit" onclick="openEditModal()" style="width:auto;">Edit</button>
+        </div>
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -25,6 +38,23 @@
         </div>
         <div class="modal-body" id="memberModalBody">
           <!-- Content will be dynamically added here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div class="modal fade edit-modal" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="editModalLabel">Edit Member</h4>
+        </div>
+        <div class="modal-body">
+          <!-- Content for edit form will be dynamically added here -->
         </div>
       </div>
     </div>
@@ -88,6 +118,13 @@
       <button id="cancelRemoveButton">Cancel</button>
     </div>
   </div>
+
+  <script>
+    function openEditModal() {
+      // Add logic to open the edit modal
+      $('#editModal').modal('show');
+    }
+  </script>
 
 </body>
 </html>
