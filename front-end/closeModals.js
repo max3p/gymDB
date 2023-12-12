@@ -1,6 +1,6 @@
 // closeModals.js
 
-// Get the modal
+// Get the modals
 var modal = document.getElementById('id01');
 var sModal = document.getElementById('id02');
 // var suModal = document.getElementById('id04');
@@ -15,14 +15,7 @@ window.onclick = function (event) {
         suModal.style.display = "none";
     }
 };
-function navigateToPage() {
 
+function navigateToPage() {
     window.location.href = "login.html";
-  }
-  function openNav() {
-    document.getElementById("myNav").style.width = "100%";
-  }
-  
-  function closeNav() {
-    document.getElementById("myNav").style.width = "0%";
-  }
+}
