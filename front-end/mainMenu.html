@@ -9,19 +9,22 @@
 
 <body>
 
-    <button class="login-btn" onclick="navigateToPage().style.display='block'" style="width:auto;">Log Out</button>
+    <button class="login-btn" onclick="redirectToLogin()" style="width:auto;">Log Out</button>
+
+    <script>
+    function redirectToLogin() {
+        // Function to log out
+        window.location.href = "login.html";
+    }
+    </script>
 
     <header>
         Momentum Fitness
     </header>
 
-    <div id="id11" class="modal">
-        <a href="login.html"></a>
-    </div>
-
     <div class="menu-content">
         <a href="members.html">Members</a>
-        <a href="members.html">Staff</a>
+        <a href="staff.html">Staff</a>
         <a href="members.html">Equipment</a>
         <a href="members.html">Incident Reports</a>
         <a href="members.html">Workout Plans</a>
