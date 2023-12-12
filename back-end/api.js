@@ -3,7 +3,22 @@ api.js
 Contains all functions for retrieving/storing data in the db
 */
 
+const express = require('express');
+const bodyParser = require('body-parser');
 const db = require('./dbDriver');
+
+const app = express();
+const port = 3000; 
+
+app.use(bodyParser.json());
+
+// Enable CORS
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Update with the specific origin(s) you want to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 
 // Generate a random ID of specified length with numbers 0-9
 function generateRandomID(length) {
@@ -268,8 +283,108 @@ function addWorkoutPlan(workoutPlanObject, callback) {
     });
 }
 
-module.exports = { 
-    getTuple, getAllTuples, deleteTuple, editTuple,
-    addMember, addWorker, addEquipment, addIncidentReport, addWorkoutPlan
-};
+// API route for getTuple
+app.get('/api/:entityName/:id', (req, res) => {
+    const { entityName, id } = req.params;
+    getTuple(entityName, id, (error, result) => {
+      if (error) {
+        return res.status(500).json(error);
+      }
+      res.json(result);
+    });
+});
 
+// API route for getAllTuples
+app.get('/api/:entityName', (req, res) => {
+    const { entityName } = req.params;
+    getAllTuples(entityName, (error, result) => {
+        if (error) {
+            return res.status(500).json(error);
+        }
+        res.json(result);
+    });
+});
+
+// API route for deleteTuple
+app.delete('/api/:entityName/:id', (req, res) => {
+    const { entityName, id } = req.params;
+    deleteTuple(entityName, id, (error, result) => {
+        if (error) {
+            return res.status(500).json(error);
+        }
+        res.json(result);
+    });
+});
+
+// API route for editTuple
+app.put('/api/:entityName/:id', (req, res) => {
+    const { entityName, id } = req.params;
+    const { attributeName, newValue } = req.body;
+    editTuple(entityName, id, attributeName, newValue, (error, result) => {
+        if (error) {
+            return res.status(500).json(error);
+        }
+        res.json(result);
+    });
+});
+
+// API route for addMember
+app.post('/api/member', (req, res) => {
+    const memberObject = req.body;
+    addMember(memberObject, (error, result) => {
+        if (error) {
+            return res.status(500).json(error);
+        }
+        res.json(result);
+    });
+});
+
+// API route for addWorker
+app.post('/api/worker', (req, res) => {
+    const workerObject = req.body;
+    addWorker(workerObject, (error, result) => {
+        if (error) {
+            return res.status(500).json(error);
+        }
+        res.json(result);
+    });
+});
+
+// API route for addEquipment
+app.post('/api/equipment', (req, res) => {
+    const equipmentObject = req.body;
+    addEquipment(equipmentObject, (error, result) => {
+        if (error) {
+            return res.status(500).json(error);
+        }
+        res.json(result);
+    });
+});
+
+// API route for addIncidentReport
+app.post('/api/incident-report', (req, res) => {
+    const incidentReportObject = req.body;
+        addIncidentReport(incidentReportObject, (error, result) => {
+        if (error) {
+            return res.status(500).json(error);
+        }
+        res.json(result);
+    });
+});
+
+// API route for addWorkoutPlan
+app.post('/api/workout-plan', (req, res) => {
+    const workoutPlanObject = req.body;
+    addWorkoutPlan(workoutPlanObject, (error, result) => {
+        if (error) {
+            return res.status(500).json(error);
+        }
+        res.json(result);
+    });
+});
+  
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+});
+  
+module.exports = app;
