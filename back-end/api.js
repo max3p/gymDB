@@ -153,26 +153,26 @@ function addMember(memberObject, callback) {
     });
 }
 
-// Inserts a new worker into the database, must input a Worker object as a parameter
+// Inserts a new employee into the database, must input a Employee object as a parameter
 // Generates a random employee_id starting with 3, returns the ID
-function addWorker(workerObject, callback) {
-    console.log('api.js: addWorker called');
+function addEmployee(employeeObject, callback) {
+    console.log('api.js: addEmployee called');
 
     // generate random ID
     const randomEmployeeId = '3' + generateRandomID(7);
 
     const sql = `
-        INSERT INTO Worker 
+        INSERT INTO Employee 
         (employee_id, name, phone_number, availability, emergency_contact)
         VALUES (?, ?, ?, ?, ?)
     `;
 
     const values = [
         randomEmployeeId,
-        workerObject.name,
-        workerObject.phone_number,
-        workerObject.availability,
-        workerObject.emergency_contact,
+        employeeObject.name,
+        employeeObject.phone_number,
+        employeeObject.availability,
+        employeeObject.emergency_contact,
     ];
 
     db.executeQuery(sql, values, (err, results) => {
@@ -338,10 +338,10 @@ app.post('/api/member', (req, res) => {
     });
 });
 
-// API route for addWorker
-app.post('/api/worker', (req, res) => {
-    const workerObject = req.body;
-    addWorker(workerObject, (error, result) => {
+// API route for addEmployee
+app.post('/api/employee', (req, res) => {
+    const employeeObject = req.body;
+    addEmployee(employeeObject, (error, result) => {
         if (error) {
             return res.status(500).json(error);
         }
