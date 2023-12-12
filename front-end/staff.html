@@ -22,14 +22,18 @@
         window.location.href = "login.html";
     }
     </script>
+    
+    <!-- Return and Add New buttons -->
+    <div class="add-new-container">
+        <button class="return-main-menu" onclick="redirectToMenu()" style="width:auto;">← Return to Main Menu</button>
+        <button onclick="AddNew()">Add New</button>
+    </div>
 
-    <!-- Return to main menu -->
-    <button class="return-main-menu" onclick="redirectToMenu()" style="width:auto;">← Return to Main Menu</button>
     <script>
-    function redirectToMenu() {
-        // Function to return to main menu
-        window.location.href = "mainMenu.html";
-    }
+        function redirectToMenu() {
+            // Function to return to main menu
+            window.location.href = "mainMenu.html";
+        }
     </script>
 
     <!-- List of staff -->

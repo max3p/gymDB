@@ -166,18 +166,30 @@ span.forgot {
 
 /* ================================ staff.html ================================ */
 
-.return-main-menu {
+/* Container for Return and Add New buttons */
+.add-new-container {
+  text-align: left;
   margin-left: 10px;
   margin-top: 10px;
+}
+
+/* Return button */
+.return-main-menu {
   background-color: #ddd;
   color: #555;
   padding: 10px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  font-size: 16px;
 }
 
+/* Add New button */
+.add-new-container button {
+  width: auto;
+  margin-left: 10px;
+}
+
+/* Main Table */
 .table {
   margin-top: 40px;
   border-collapse: collapse;
@@ -195,7 +207,7 @@ span.forgot {
   text-align: left;
 }
 
-/* expand modal */
+/* Expand modal */
 .modal {
   display: none;
   position: fixed;
@@ -236,7 +248,21 @@ span.forgot {
   font-weight: bold;
 }
 
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
 
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
 
 
 
@@ -255,21 +281,7 @@ span.forgot {
 
 /* ================================ ETC ================================ */
 
-/* The Close Button (x) */
-.close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-}
 
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
-}
 
 
 
