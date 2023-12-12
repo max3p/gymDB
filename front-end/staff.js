@@ -114,19 +114,29 @@ function collectData() {
     var emergency_contact = document.getElementById("emergencyPhone").value;
 
     // Create an object to store the data
-    var dataObject = {
+    var newObject = {
         name: name,
         phone_number: phone_number,
         availability: availability,
         emergency_contact: emergency_contact
     };
 
-    // Display the collected data
-    document.getElementById("text").innerHTML = "Collected Data: " + JSON.stringify(dataObject);
+    // Send the new object to the database
+    fetch(`${baseURL}/employee`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newObject),
+      })
+        .then((response) => response.json())
+        .then(() => console.log('\nInserted new Employee into the db'))
+        .catch((error) => console.error('Error:', error));
 
-    // Close modal and show a popup window confirmation
+    // Close modal, show a popup window confirmation, then refresh page
     closeModal("addNewModal");
     alert("Data Submitted");
+    location.reload();
 }
 
 // Function to close a modal
