@@ -8,6 +8,7 @@ const baseURL = 'http://localhost:3000/api';
 // User Icon
 var imageUrl = "./images/user-icon.png";
 
+// Fetches entire table from database
 async function fetchAllData() {
     try {
         // Set up variables
@@ -68,7 +69,7 @@ async function fetchAllData() {
     }
 }
 
-// Expand function
+// Fetches data on one entity, then opens the Expand modal
 async function expand(employeeID) {
     console.log("Expanding employee ID:", employeeID);
 
@@ -97,11 +98,35 @@ function openExpandModal(employeeObject) {
     modal.style.display = "block";
 }
 
+// Opens the Add New modal
 function openAddNewModal() {
     var modal = document.getElementById("addNewModal");
-
     // Display the modal
     modal.style.display = "block";
+}
+
+// Collects data in a form for the Add New modal
+function collectData() {
+    // Get form elements
+    var name = document.getElementById("name").value;
+    var phone_number = document.getElementById("phone").value;
+    var availability = document.getElementById("availability").value;
+    var emergency_contact = document.getElementById("emergencyPhone").value;
+
+    // Create an object to store the data
+    var dataObject = {
+        name: name,
+        phone_number: phone_number,
+        availability: availability,
+        emergency_contact: emergency_contact
+    };
+
+    // Display the collected data
+    document.getElementById("text").innerHTML = "Collected Data: " + JSON.stringify(dataObject);
+
+    // Close modal and show a popup window confirmation
+    closeModal("addNewModal");
+    alert("Data Submitted");
 }
 
 // Function to close a modal
@@ -121,5 +146,5 @@ window.onclick = function (event) {
     }
 };
 
-// Call async function to fetch data
+// Call async function to fetch data upon load
 fetchAllData();
