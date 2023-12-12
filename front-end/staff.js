@@ -70,7 +70,7 @@ async function fetchData() {
 
 // Expand function
 function expand() {
-    console.log("Expand function called");
+    console.log(""); //print member name
 }
 
 // Call async function

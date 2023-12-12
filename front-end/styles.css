@@ -36,9 +36,7 @@ button:hover {
 /* ================================ login.html ================================ */
 
 .login-btn {
-  position: fixed;
-  top: 30px;
-  right: 40px;
+  margin-left: 900px;
   background-color: #ffffff;
   color: rgb(46, 46, 46);
   padding: 10px 15px;
@@ -169,9 +167,8 @@ span.forgot {
 /* ================================ staff.html ================================ */
 
 .return-main-menu {
-  position: fixed;
-  top: 140px;
-  left: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
   background-color: #ddd;
   color: #555;
   padding: 10px;
@@ -182,7 +179,7 @@ span.forgot {
 }
 
 .table {
-  margin-top: 80px;
+  margin-top: 40px;
   border-collapse: collapse;
   width: 1000px;
   margin-left: auto;
