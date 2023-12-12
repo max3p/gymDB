@@ -1,4 +1,4 @@
-// const api = require("../back-end/api.js");
+//const api = require("../back-end/api.js");
 // Sample list of objects representing members
 const membersList = [
     {
@@ -30,15 +30,6 @@ const membersList = [
   ];
   
   document.addEventListener('DOMContentLoaded', function () {
-
-    window.addEventListener('click', function (event) {
-        const signUpModal = document.getElementById('id21');
-        if (event.target == signUpModal) {
-          signUpModal.style.display = 'none';
-        }
-      });
-
-      
     const table = document.querySelector('table');
   
     for (let i = 0; i < membersList.length; i++) {
@@ -50,7 +41,7 @@ const membersList = [
       const icon = document.createElement('i');
       icon.className = 'fas fa-user clickable-icon';
       icon.style.fontSize = '24px';
-      icon.addEventListener('click', function() {
+      icon.addEventListener('click', function () {
         // Open the modal with member information
         const modalBody = document.getElementById('memberModalBody');
         modalBody.innerHTML = ''; // Clear previous content
@@ -81,8 +72,26 @@ const membersList = [
       trashIcon.className = 'fas fa-trash clickable-icon';
       trashIcon.style.fontSize = '24px';
       trashIcon.addEventListener('click', function () {
-        // Handle the logic to remove the member or show a confirmation modal
-        console.log('Remove member clicked:', member);
+        // Open a confirmation modal before removing the member
+        const confirmationModal = document.getElementById('confirmationModal');
+        confirmationModal.style.display = 'block';
+  
+        // Handle the logic to remove the member if confirmed
+        const confirmButton = document.getElementById('confirmButton');
+        confirmButton.addEventListener('click', function () {
+          // Handle logic to remove the member
+          console.log('Remove member:', member);
+  
+          // Close the confirmation modal
+          confirmationModal.style.display = 'none';
+        });
+  
+        // Handle the logic to cancel the removal
+        const cancelButton = document.getElementById('cancelButton');
+        cancelButton.addEventListener('click', function () {
+          // Close the confirmation modal
+          confirmationModal.style.display = 'none';
+        });
       });
       trashIconCell.appendChild(trashIcon);
   
@@ -93,10 +102,28 @@ const membersList = [
     }
   });
   
-
+  trashIcon.addEventListener('click', function () {
+    // Open a confirmation modal before removing the member
+    const confirmationModal = document.getElementById('confirmationModal');
+    confirmationModal.style.display = 'block';
   
-
+    // Handle the logic to remove the member if confirmed
+    const confirmButton = document.getElementById('confirmRemoveButton');
+    confirmButton.addEventListener('click', function () {
+      // Handle logic to remove the member
+      console.log('Remove member:', member);
   
+      // Close the confirmation modal
+      confirmationModal.style.display = 'none';
+    });
+  
+    // Handle the logic to cancel the removal
+    const cancelButton = document.getElementById('cancelRemoveButton');
+    cancelButton.addEventListener('click', function () {
+      // Close the confirmation modal
+      confirmationModal.style.display = 'none';
+    });
+  });
 
   var suModal = document.getElementById('id21');
 
