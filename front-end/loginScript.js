@@ -25,7 +25,7 @@ function loginUser() {
 
     if (username === hardcodedUsername && password === hardcodedPassword) {
         // Redirect to another page if username and password match
-        window.location.href = 'staffMenu.html';
+        window.location.href = 'mainMenu.html';
     } else {
         // Display a message if username or password doesn't match
         alert('Invalid username or password. Please try again.');
