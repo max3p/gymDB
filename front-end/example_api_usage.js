@@ -3,7 +3,10 @@ example_api_usage.js
 Examples functions to retrieve/store data using api.js 
 */
 
-const api = require("../back-end/api.js");
+// Assuming this code is running in a web browser and needs to access api.js running in Node.js
+// Also, assuming the server is running at http://localhost:3000
+
+const baseURL = 'http://localhost:3000/api'; // Update with your server URL
 
 /* ================================= getTuple ================================= */
 
@@ -11,69 +14,68 @@ const api = require("../back-end/api.js");
 const entityId = 2; // Specify the ID of the tuple to retrieve
 const entityName = 'Member'; // Specify the name of the table
 
-api.getTuple(entityName, entityId, (err, tupleObject) => {
-    if (err) {
-        console.error('Error:', err);
-    } else {
-        console.log('\ngetTuple() Result:');
-
-        // Print each attribute of tupleObject
-        console.log('   Member ID:', tupleObject.member_id);
-        console.log('   Name:', tupleObject.name);
-        console.log('   Phone Number:', tupleObject.phone_number);
-        console.log('   Emergency Contact:', tupleObject.emergency_contact);
-        console.log('   Address:', tupleObject.address);
-        console.log('   Credit Card:', tupleObject.credit_card);
-        console.log('   Franchise Number:', tupleObject.franchise_number);
-        console.log('   Trainer Employee ID:', tupleObject.trainer_employee_id);
-    }
-});
+fetch(`${baseURL}/${entityName}/${entityId}`)
+  .then((response) => response.json())
+  .then((tupleObject) => {
+    console.log('\ngetTuple() Result:');
+    // Print each attribute of tupleObject
+    console.log('   Member ID:', tupleObject.member_id);
+    console.log('   Name:', tupleObject.name);
+    console.log('   Phone Number:', tupleObject.phone_number);
+    console.log('   Emergency Contact:', tupleObject.emergency_contact);
+    console.log('   Address:', tupleObject.address);
+    console.log('   Credit Card:', tupleObject.credit_card);
+    console.log('   Franchise Number:', tupleObject.franchise_number);
+    console.log('   Trainer Employee ID:', tupleObject.trainer_employee_id);
+  })
+  .catch((error) => console.error('Error:', error));
 
 /* ================================= getAllTuples ================================= */
 
 // Example of using getAllTuples function to retrieve all tuples from member
 const entityNameToRetrieve = 'Member'; // Specify the name of the table
-api.getAllTuples(entityNameToRetrieve, (err, tuplesArray) => {
-    if (err) {
-        console.error('Error:', err);
-    } else {
-        console.log(`\ngetAllTuples() Results for ${entityNameToRetrieve}:`);
-
-        // Iterate through each tuple in the array
-        tuplesArray.forEach((tupleObject) => {
-            console.log('-------------------');
-            console.log('   Member ID:', tupleObject.member_id);
-            console.log('   Name:', tupleObject.name);
-            console.log('   Phone Number:', tupleObject.phone_number);
-            console.log('   Emergency Contact:', tupleObject.emergency_contact);
-            console.log('   Address:', tupleObject.address);
-            console.log('   Credit Card:', tupleObject.credit_card);
-            console.log('   Franchise Number:', tupleObject.franchise_number);
-            console.log('   Trainer Employee ID:', tupleObject.trainer_employee_id);
-        });
-    }
-});
+fetch(`${baseURL}/${entityNameToRetrieve}`)
+  .then((response) => response.json())
+  .then((tuplesArray) => {
+    console.log(`\ngetAllTuples() Results for ${entityNameToRetrieve}:`);
+    // Iterate through each tuple in the array
+    tuplesArray.forEach((tupleObject) => {
+      console.log('-------------------');
+      console.log('   Member ID:', tupleObject.member_id);
+      console.log('   Name:', tupleObject.name);
+      console.log('   Phone Number:', tupleObject.phone_number);
+      console.log('   Emergency Contact:', tupleObject.emergency_contact);
+      console.log('   Address:', tupleObject.address);
+      console.log('   Credit Card:', tupleObject.credit_card);
+      console.log('   Franchise Number:', tupleObject.franchise_number);
+      console.log('   Trainer Employee ID:', tupleObject.trainer_employee_id);
+    });
+  })
+  .catch((error) => console.error('Error:', error));
 
 /* ================================= addMember ================================= */
 
 // Example of using the addMember function to insert a new member into the database
 // first create a new Member object
 const newMember = {
-    name: 'Quagmire',
-    phone_number: '123-456-7890',
-    emergency_contact: '123-444-4456',
-    address: '123 Main St, City',
-    credit_card: '1234-5678-9012-3456',
+  name: 'Quagmire',
+  phone_number: '123-456-7890',
+  emergency_contact: '123-444-4456',
+  address: '123 Main St, City',
+  credit_card: '1234-5678-9012-3456',
 };
 
 // then call addMember to insert the new member into the db
-api.addMember(newMember, (err) => {
-    if (err) {
-      console.error('Error:', err);
-    } else {
-      console.log('\nInserted new Member into the db');
-    }
-});
+fetch(`${baseURL}/member`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(newMember),
+})
+  .then((response) => response.json())
+  .then(() => console.log('\nInserted new Member into the db'))
+  .catch((error) => console.error('Error:', error));
 
 /* ================================= deleteTuple ================================= */
 
@@ -81,13 +83,11 @@ api.addMember(newMember, (err) => {
 const entityNameToDelete = 'Member'; // Specify the name of the table
 const entityIdToDelete = 92267122; // Specify the ID of the tuple to delete
 
-api.deleteTuple(entityNameToDelete, entityIdToDelete, (err, result) => {
-    if (err) {
-        console.error('Error:', err);
-    } else {
-        console.log(`\n${entityNameToDelete} deleted successfully`);
-    }
-});
+fetch(`${baseURL}/${entityNameToDelete}/${entityIdToDelete}`, {
+  method: 'DELETE',
+})
+  .then(() => console.log(`\n${entityNameToDelete} deleted successfully`))
+  .catch((error) => console.error('Error:', error));
 
 /* ================================= editTuple ================================= */
 
@@ -98,11 +98,16 @@ const attributeToUpdate = 'phone_number'; // Specify the attribute to update
 const newValueToUpdate = '555-1234'; // Specify the new value for the attribute
 
 // Call the editTuple function to perform the update
-api.editTuple('Member', entityIdToUpdate, attributeToUpdate, newValueToUpdate, (err, result) => {
-    if (err) {
-        console.error('Error:', err);
-    } else {
-        console.log('\neditTuple() Result:');
-        console.log(result.message);
-    }
-});
+fetch(`${baseURL}/member/${entityIdToUpdate}`, {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ attributeName: attributeToUpdate, newValue: newValueToUpdate }),
+})
+  .then((response) => response.json())
+  .then((result) => {
+    console.log('\neditTuple() Result:');
+    console.log(result.message);
+  })
+  .catch((error) => console.error('Error:', error));
