@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="members.js"></script>
   <title>Test App</title>
 </head>
@@ -34,42 +35,53 @@
   </header>
   <!-- <h1>Members List</h1> -->
   <!-- <ul id="membersList"></ul> -->
-
-  <table>
-    <tr class="first-row">
-      <th class="tableBorder"></th>
-      <th>ID</th>
-      <th>Firstname</th>
-      <th>Lastname</th>
-    </tr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="tableBorder"></th>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Actions</th> <!-- Add this column for the trash icon -->
+      </tr>
+    </thead>
+    <tbody id="memberTableBody">
+      <!-- Member rows will be inserted here -->
+    </tbody>
   </table>
 
   <div id="id21" class="signUpModal">
-    <form class="signUpModal-content animate" action="/action_page.php" method="post">
+    <form id="signupForm" class="signUpModal-content animate" action="/action_page.php" method="post">
         <div class="container">
 
             <form>
                 <label for="memberInfo"><b>Member Information</b></label>
-                <label for="memberId">Member ID</label>
-                <input type="text" id="memberId" placeholder="Enter 9-digit Member ID" pattern="\d{9}" maxlength="9" required>
-                <label for="memberEmail">Email</label>
-                <input type="text">
+                <!-- <label for="memberId">Member ID</label>
+                <input type="text" id="memberId" placeholder="Enter 9-digit Member ID" pattern="\d{9}" maxlength="9" required> -->
+                <!-- <label for="memberEmail">Email</label>
+                <input type="text"> -->
                 <!-- <input style="width: 98.6%; opacity: 0.5;" display="block" type="email"> -->
                 <label for="Name">Name</label>
                 <input type="text">
                 <label for="phoneNumber">Phone Number</label>
                 <input type="text" id="phoneNumber" pattern="\d{11}" maxlength="11" required>
 
-                <label for="username">Username</label>
+                <!-- <label for="username">Username</label>
                 <input type="text">
                 <label for="password">Password</label>
-                <input type="password">
+                <input type="password"> -->
+
+                <label for="address">Address</label>
+                <input type="text">
+                <label for="card">Credit Card Number</label>
+                <input type="text">
 
                 <label for="emergencyContact"><b>Emergency Contact</b></label>
-                <label for="eName">Name</label>
+                
+                <!-- <label for="eName">Name</label>
                 <input type="text">
                 <label for="eRelation">Relation</label>
-                <input type="text">
+                <input type="text"> -->
                 <label for="ePhone">Phone</label>
                 <input type="text" id="phoneNumber" pattern="\d{11}" maxlength="11" required>
 
