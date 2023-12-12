@@ -14,7 +14,8 @@
         Momentum Fitness
         <button class="login-btn" onclick="redirectToLogin()" style="width:auto;">Log Out</button>
     </header>
-    
+
+    <!-- Log Out -->
     <script>
     function redirectToLogin() {
         // Function to log out
@@ -35,6 +36,32 @@
     <table id="staffTable" class="table">
         <caption>Staff</caption>
     </table>
+
+    <!-- Expand Modal -->
+    <div id="expandModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+
+            <!-- Image on the left -->
+            <div class="modal-image">
+                <img src="./images/user-icon.png" alt="Employee Image">
+            </div>
+
+            <!-- Data columns -->
+            <div class="modal-data">
+                <p id="employeeIdInModal"></p>
+                <p>Column 1: Hardcoded Data</p>
+                <p>Column 2: Hardcoded Data</p>
+                <p>Column 3: Hardcoded Data</p>
+                <p>Column 4: Hardcoded Data</p>
+                <p>Column 5: Hardcoded Data</p>
+                <p>Column 6: Hardcoded Data</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Fetch staff data -->
     <script src="staff.js"></script>
 
 </body>
