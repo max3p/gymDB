@@ -45,10 +45,32 @@ async function fetchData() {
             // Insert name into the third cell
             var nameCell = row.insertCell(2);
             nameCell.innerHTML = staffList[i].name;
+
+            // Insert "Expand" button into the fourth cell
+            var expandCell = row.insertCell(3);
+            var expandButton = document.createElement("button");
+            expandButton.innerHTML = "Expand";
+            expandCell.appendChild(expandButton);
         }
-    } catch (error) {
+
+        // Add an event listener for clicking expand
+        table.addEventListener("click", function(event) {
+            var target = event.target;
+
+            // Check if the clicked element is a "Expand" button
+            if (target.tagName === 'BUTTON' && target.innerHTML === 'Expand') {
+                expand();
+            }
+        });
+
+     } catch (error) {
         console.error('Error:', error);
     }
+}
+
+// Expand function
+function expand() {
+    console.log("Expand function called");
 }
 
 // Call async function
