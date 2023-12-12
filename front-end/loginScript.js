@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function loginUser() {
-    var hardcodedUsername = 'user';
-    var hardcodedPassword = 'pass';
+    var hardcodedUsername = 'admin';
+    var hardcodedPassword = 'password';
 
     // Get the entered username and password
     var username = document.getElementsByName('uname')[0].value;
