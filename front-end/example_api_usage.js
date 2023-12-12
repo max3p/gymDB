@@ -6,7 +6,7 @@ Examples functions to retrieve/store data using api.js
 // Assuming this code is running in a web browser and needs to access api.js running in Node.js
 // Also, assuming the server is running at http://localhost:3000
 
-const baseURL = 'http://localhost:3000/api'; // Update with your server URL
+const baseURL = 'http://localhost:3000/api'; 
 
 /* ================================= getTuple ================================= */
 
