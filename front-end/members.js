@@ -30,6 +30,15 @@ const membersList = [
   ];
   
   document.addEventListener('DOMContentLoaded', function () {
+
+    window.addEventListener('click', function (event) {
+        const signUpModal = document.getElementById('id21');
+        if (event.target == signUpModal) {
+          signUpModal.style.display = 'none';
+        }
+      });
+
+      
     const table = document.querySelector('table');
   
     for (let i = 0; i < membersList.length; i++) {
@@ -146,3 +155,4 @@ signupForm.addEventListener('submit', function (event) {
         }
     });
 });
+
