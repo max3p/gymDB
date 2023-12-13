@@ -36,9 +36,9 @@
         }
     </script>
 
-    <!-- List of incidentReports -->
-    <table id="incidentReportTable" class="table">
-        <caption>Incident Reports</caption>
+    <!-- List of workoutPlans -->
+    <table id="workoutPlanTable" class="table">
+        <caption>Workout Plans</caption>
     </table>
 
     <!-- Expand Modal -->
@@ -53,10 +53,10 @@
 
             <!-- Data -->
             <div class="modal-data">
-                <p id="incidentReportIdInModal"></p>
-                <p id="incidentReportPeopleInvolvedInModal"></p>
-                <p id="incidentReportEquipmentInvolvedInModal"></p>
-                <p id="incidentReportDateInModal"></p>
+                <p id="workoutPlanIdInModal"></p>
+                <p id="workoutPlanPeopleInvolvedInModal"></p>
+                <p id="workoutPlanEquipmentInvolvedInModal"></p>
+                <p id="workoutPlanDateInModal"></p>
 
                 <!-- Edit and Delete buttons -->
                 <div class="modal-buttons">
@@ -99,7 +99,7 @@
 
             <!-- Form to collect data -->
             <form id="editForm">
-                <!-- Hidden field for incidentReport ID -->
+                <!-- Hidden field for workoutPlan ID -->
                 <input type="hidden" id="id2" name="id2">
 
                 <!-- People Involved -->
@@ -120,8 +120,8 @@
         </div>
     </div>
 
-    <!-- Fetch incidentReport data -->
-    <script src="incidentReport.js"></script>
+    <!-- Fetch workoutPlan data -->
+    <script src="workoutPlan.js"></script>
 
 </body>
 </html>
