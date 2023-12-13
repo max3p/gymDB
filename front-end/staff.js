@@ -94,6 +94,24 @@ function openExpandModal(employeeObject) {
     employeeAvInModal.textContent = "Availability: " + employeeObject.availability;
     employeeEmergencyCInModal.textContent = "Emergency Contact: " + employeeObject.emergency_contact;
 
+    // Display the "Edit" button in the modal
+    var editButton = document.createElement("button");
+    editButton.innerHTML = "Edit";
+    editButton.classList.add("modal-button");
+    editButton.addEventListener("click", function() {
+        editEmployee(employeeObject.employee_id);
+    });
+    document.getElementsByClassName("modal-buttons")[0].appendChild(editButton);
+
+    // Display the "Delete" button in the modal
+    var deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "Delete";
+    deleteButton.classList.add("modal-button");
+    deleteButton.addEventListener("click", function() {
+        deleteEmployee(employeeObject.employee_id);
+    });
+    document.getElementsByClassName("modal-buttons")[0].appendChild(deleteButton);
+
     // Display the modal
     modal.style.display = "block";
 }
@@ -135,8 +153,44 @@ function collectData() {
 
     // Close modal, show a popup window confirmation, then refresh page
     closeModal("addNewModal");
-    alert("Data Submitted");
+    alert("New Employee Added Successfully");
     location.reload();
+}
+
+// Opens a form to edit the employee with the specified ID
+function editEmployee(employee_id){
+    console.log("edit employee with id:" + employee_id);
+
+    //TODO
+
+}
+
+// Deletes the employee with the specified ID
+function deleteEmployee(employee_id){
+    console.log("deleting employee with id:" + employee_id);
+
+    // Show a confirmation dialog
+    var confirmed = window.confirm("Are you sure you want to delete this employee?");
+    if (confirmed) {
+        // If user clicks "OK"
+        const entityNameToDelete = 'Employee';
+        fetch(`${baseURL}/${entityNameToDelete}/${employee_id}`, {
+        method: 'DELETE',
+        })
+        .then(() => {
+            console.log(`\n${entityNameToDelete} deleted successfully`);
+            closeModal("expandModal");
+            location.reload();
+        })
+        .catch((error) => console.error('Error:', error));
+
+        //Close modal and refresh page
+        
+
+    } else {
+        // If user clicks "Cancel"
+        console.log("Delete cancelled");
+    }
 }
 
 // Function to close a modal
