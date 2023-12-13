@@ -8,6 +8,14 @@ body {
     padding: 0;
 }
 
+#background-container {
+  /*Image from: https://www.pexels.com/photo/person-holding-barbell-841130/*/
+  background: url('./images/barbell.jpg') center/cover fixed; 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 header {
     background-color: #aa1504;
     padding: 30px;
