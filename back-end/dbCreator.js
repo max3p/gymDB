@@ -78,7 +78,7 @@ function createDB() {
 
                 // Create workout plan table
                 createTable("WorkoutPlan", "CREATE TABLE `gymdb`.`WorkoutPlan` (" +
-                "`report_number` char(8) PRIMARY KEY," +
+                "`workoutplan_id` char(8) PRIMARY KEY," +
                 "`employee_id` char(8)," +
                 "`date_generated` CHAR(50)," +
                 "`days_of_the_week` CHAR(50)," +
@@ -88,7 +88,7 @@ function createDB() {
 
                 // Create incident report table
                 createTable("IncidentReport", "CREATE TABLE `gymdb`.`IncidentReport` (" +
-                "`report_number` char(8) PRIMARY KEY," +
+                "`incidentreport_id` char(8) PRIMARY KEY," +
                 "`people_involved` CHAR(50)," +
                 "`equipment_involved` CHAR(50)," +
                 "`date` CHAR(50)," +
