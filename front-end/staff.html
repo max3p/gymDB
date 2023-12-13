@@ -94,11 +94,6 @@
                 <!-- Submit button -->
                 <input type="button" value="Submit" onclick="collectData()">
             </form>
-
-            <!-- Display collected data -->
-            <div class="modal-data">
-                <p id="text"></p>
-            </div>
         </div>
     </div>
 
@@ -108,31 +103,26 @@
             <span class="close" onclick="closeModal('editModal')">&times;</span>
 
             <!-- Form to collect data -->
-            <form id="dataForm">
+            <form id="editForm">
                 <!-- Name -->
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name2" name="name2" required>
 
                 <!-- Phone number -->
                 <label for="phone">Phone Number:</label>
-                <input type="text" id="phone" name="phone" required>
+                <input type="text" id="phone2" name="phone2" required>
 
                 <!-- Availability -->
                 <label for="availability">Availability:</label>
-                <input type="text" id="availability" name="availability" required>
+                <input type="text" id="availability2" name="availability2" required>
 
                 <!-- Emergency phone number -->
                 <label for="emergencyPhone">Emergency Phone Number:</label>
-                <input type="text" id="emergencyPhone" name="emergencyPhone" required>
+                <input type="text" id="emergencyPhone2" name="emergencyPhone2" required>
 
                 <!-- Submit button -->
                 <input type="button" value="Update" onclick="updateData()">
             </form>
-
-            <!-- Display collected data -->
-            <div class="modal-data">
-                <p id="text"></p>
-            </div>
         </div>
     </div>
 

@@ -116,7 +116,7 @@ function openExpandModal(employeeObject) {
     // Update event listeners and text for "Edit" and "Delete" buttons
     editButton.removeEventListener("click", null);
     editButton.addEventListener("click", function() {
-        editEmployee(employeeObject.employee_id);
+        editEmployee(employeeObject);
     });
 
     deleteButton.removeEventListener("click", null);
@@ -125,6 +125,19 @@ function openExpandModal(employeeObject) {
     });
 
     // Display the modal
+    modal.style.display = "block";
+}
+
+// Function to open Add New modal
+function openAddNewModal() {
+    var modal = document.getElementById("addNewModal");
+    
+    // Ensure form is clear
+    document.getElementById("name").value = '';
+    document.getElementById("phone").value = '';
+    document.getElementById("availability").value = '';
+    document.getElementById("emergencyPhone").value = '';
+
     modal.style.display = "block";
 }
 
@@ -163,16 +176,46 @@ function collectData() {
 }
 
 // Opens a form to edit the employee with the specified ID
-function editEmployee(employee_id){
-    console.log("edit employee with id:" + employee_id);
+function editEmployee(employeeObject){
+    console.log("edit employee with id:" + employeeObject.employee_id);
 
     // Close Expand modal
     closeModal('expandModal');
 
     // Display Edit modal
-    var modal = document.getElementById("addNewModal");
+    var modal = document.getElementById("editModal");
     modal.style.display = "block";
 
+    // Populate form fields with default values
+    document.getElementById("name2").value = employeeObject.name;
+    document.getElementById("phone2").value = employeeObject.phone_number;
+    document.getElementById("availability2").value = employeeObject.availability;
+    document.getElementById("emergencyPhone2").value = employeeObject.emergency_contact;
+}
+
+// Collects data in a form for Edit modal, updates the database
+function updateData() {
+    // Get form elements
+    var name = document.getElementById("name2").value;
+    var phone_number = document.getElementById("phone2").value;
+    var availability = document.getElementById("availability2").value;
+    var emergency_contact = document.getElementById("emergencyPhone2").value;
+
+    // Create an object to store the data
+    var newObject = {
+        name: name,
+        phone_number: phone_number,
+        availability: availability,
+        emergency_contact: emergency_contact
+    };
+
+    //update 
+    //TODO
+
+    // Close modal, show a popup window confirmation, then refresh page
+    closeModal("editModal");
+    alert("Employee updated Successfully");
+    location.reload();
 }
 
 // Deletes the employee with the specified ID
