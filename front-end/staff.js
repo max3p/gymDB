@@ -191,6 +191,7 @@ function editEmployee(employeeObject){
     document.getElementById("phone2").value = employeeObject.phone_number;
     document.getElementById("availability2").value = employeeObject.availability;
     document.getElementById("emergencyPhone2").value = employeeObject.emergency_contact;
+    document.getElementById("id2").value = employeeObject.employee_id;
 }
 
 // Collects data in a form for Edit modal, updates the database
@@ -200,17 +201,39 @@ function updateData() {
     var phone_number = document.getElementById("phone2").value;
     var availability = document.getElementById("availability2").value;
     var emergency_contact = document.getElementById("emergencyPhone2").value;
+    var id = document.getElementById("id2").value;
 
     // Create an object to store the data
-    var newObject = {
+    var updateObject = {
+        employee_id: id,
         name: name,
         phone_number: phone_number,
         availability: availability,
         emergency_contact: emergency_contact
     };
 
-    //update 
-    //TODO
+    // Update each attribute in the database one by one
+    const entityType = 'employee';
+    for (const [key, value] of Object.entries(updateObject)) {
+        if (key !== 'employee_id') {
+            const attributeToUpdate = key;
+            const newValueToUpdate = value;
+
+            fetch(`${baseURL}/${entityType}/${updateObject.employee_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ attributeName: attributeToUpdate, newValue: newValueToUpdate }),
+            })
+            .then((response) => response.json())
+            .then((result) => {
+                console.log('\neditTuple() Result:');
+                console.log(result.message);
+            })
+            .catch((error) => console.error('Error:', error));
+        }
+    }
 
     // Close modal, show a popup window confirmation, then refresh page
     closeModal("editModal");
