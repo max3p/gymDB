@@ -39,8 +39,8 @@ function createDB() {
                 "`trainer_employee_id` char(8)" +
                 ");");
 
-                // Create worker table
-                createTable("Worker", "CREATE TABLE `gymdb`.`Worker` (" +
+                // Create Employee table
+                createTable("Employee", "CREATE TABLE `gymdb`.`Employee` (" +
                 "`employee_id` CHAR(8) PRIMARY KEY," +
                 "`name` CHAR(50)," +
                 "`phone_number` CHAR(15)," +
@@ -133,11 +133,11 @@ function createDB() {
                 //Add all foreign keys once tables are created
                 alterTable("Member", "ALTER TABLE `Member` ADD FOREIGN KEY (`franchise_number`) REFERENCES `GymLocation`(`franchise_number`);");
                 alterTable("Member", "ALTER TABLE `Member` ADD FOREIGN KEY (`trainer_employee_id`) REFERENCES `Trainer`(`employee_id`);");
-                alterTable("Worker", "ALTER TABLE `Worker` ADD FOREIGN KEY (`franchise_number`) REFERENCES `GymLocation`(`franchise_number`);");
-                alterTable("Manager", "ALTER TABLE `Manager` ADD FOREIGN KEY (`employee_id`) REFERENCES `Worker`(`employee_id`);");
-                alterTable("Receptionist", "ALTER TABLE `Receptionist` ADD FOREIGN KEY (`employee_id`) REFERENCES `Worker`(`employee_id`);");
-                alterTable("WorkoutPlan", "ALTER TABLE `WorkoutPlan` ADD FOREIGN KEY (`employee_id`) REFERENCES `Worker`(`employee_id`);");
-                alterTable("Paycheck", "ALTER TABLE `Paycheck` ADD FOREIGN KEY (`employee_id`) REFERENCES `Worker`(`employee_id`);");
+                alterTable("Employee", "ALTER TABLE `Employee` ADD FOREIGN KEY (`franchise_number`) REFERENCES `GymLocation`(`franchise_number`);");
+                alterTable("Manager", "ALTER TABLE `Manager` ADD FOREIGN KEY (`employee_id`) REFERENCES `Employee`(`employee_id`);");
+                alterTable("Receptionist", "ALTER TABLE `Receptionist` ADD FOREIGN KEY (`employee_id`) REFERENCES `Employee`(`employee_id`);");
+                alterTable("WorkoutPlan", "ALTER TABLE `WorkoutPlan` ADD FOREIGN KEY (`employee_id`) REFERENCES `Employee`(`employee_id`);");
+                alterTable("Paycheck", "ALTER TABLE `Paycheck` ADD FOREIGN KEY (`employee_id`) REFERENCES `Employee`(`employee_id`);");
 
             });
         });

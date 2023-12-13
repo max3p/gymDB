@@ -11,17 +11,14 @@
 </head>
 
 <body>
-
-    <!-- Add the login button here -->
-    <button class="login-btn" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
     <header>
         Momentum Fitness
+        <button class="login-btn" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
     </header>
 
-    <div id="id01" class="modal">
+    <div id="id01" class="login-modal">
 
-        <form class="modal-content animate" action="/action_page.php" method="post">
+        <form class="login-modal-content animate" action="/action_page.php" method="post">
 
             <div class="container">
                 <label for="uname"><b>Username</b></label>
@@ -31,9 +28,9 @@
                 <input type="password" placeholder="Enter Password" name="psw" required>
 
                 <!-- this button is now watched by an event listener in loginScript.js-->
-                <button id="id05" type="button">Login</button>
+                <button id="id05" type="button" style="width:100px;">Login</button>
 
-                <button class="signUp-btn" type="button" onclick="document.getElementById('id04').style.display='block'" style="width:auto;">Sign Up </button>
+                <button class="signUp-btn" type="button" onclick="document.getElementById('id04').style.display='block'" style="width:100px;">Sign Up </button>
 
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me
@@ -42,31 +39,20 @@
 
             <div class="container" style="background-color:#f1f1f1">
                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
+                <span class="forgot">Forgot <a href="#">password?</a></span>
             </div>
         </form>
     </div>
 
-    <button class="search-btn" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Search</button>
-
-    <div id="id02" class="searchModal">
-        <form class="searchModal-content animate" action="/action_page.php" method="post">
-            <div class="container">
-                <label for="searchLabel"><b>Search</b></label>
-                <input type="text" placeholder="Search...">
-
-            </div>
-        </form>
-    </div>
     <div id="id04" class="signUpModal">
         <form class="signUpModal-content animate" action="/action_page.php" method="post">
             <div class="container">
 
                 <form>
-                    <label for="memberInfo"><b>Member Information</b></label>
-                    <label for="memberId">Member ID</label>
-                    <input type="text" id="memberId" placeholder="Enter 9-digit Member ID" pattern="\d{9}" maxlength="9" required>
-                    <label for="memberEmail">Email</label>
+                    
+                    <label for="staffId">Member ID</label>
+                    <input type="text" id="staffId" placeholder="Enter 9-digit staff ID" pattern="\d{9}" maxlength="9" required>
+                    <label for="staffEmail">Email</label>
                     <input type="text">
                     <!-- <input style="width: 98.6%; opacity: 0.5;" display="block" type="email"> -->
                     <label for="Name">Name</label>
@@ -87,15 +73,13 @@
                     <label for="ePhone">Phone</label>
                     <input type="text" id="phoneNumber" pattern="\d{11}" maxlength="11" required>
 
-                    <button type="submit">Submit</button>
+                    <button id="id14" type="submit">Submit</button>
                 </form>
 
 
             </div>
         </form>
     </div>
-
-    <script src="closeModals.js"></script>
 
 </body>
 </html>

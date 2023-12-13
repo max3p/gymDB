@@ -1,5 +1,7 @@
 /* styles.css */
 
+/* ================================ General Purpose ================================ */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -7,15 +9,71 @@ body {
 }
 
 header {
-    font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: #aa1504;
-    padding: 50px;
+    padding: 30px;
     text-align: left;
     color: white;
     font-size: 24px;
+    font-weight: bold;
 }
 
-/* Full-width input fields */
+button {
+  background-color: #aa1504;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  cursor: pointer;
+  width: 60%;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* ================================ login.html ================================ */
+
+.login-btn {
+  margin-left: 900px;
+  background-color: #ffffff;
+  color: rgb(46, 46, 46);
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.login-btn:hover {
+  opacity: 0.8;
+}
+
+/* Login modal */
+.login-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+/* Login Modal Content/Box */
+.login-modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
 input[type="text"],
 input[type="password"] {
     width: 100%;
@@ -26,78 +84,50 @@ input[type="password"] {
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
-button {
-    background-color: #aa1504;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-}
-
 .container {
-    padding: 16px;
+  padding: 16px;
 }
 
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
-
-/* The Modal (background) */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* The Close Button (x) */
-.close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
-}
-
+/* Sign up button*/
 .signUp-btn {
-    color: white;
+  color: white;
+}
+
+/* Login modal cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Forgot password */
+span.forgot {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Signup Modal Content/Box */
+.signUpModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+.signUpModal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  border: 1px solid #888;
+  width: 90%;
+  max-height: 80%;
+  overflow-y: auto;
 }
 
 .signUp-btn:hover,
@@ -105,6 +135,155 @@ span.psw {
     color: red;
     cursor: pointer;
 }
+
+/* ================================ staffMenu.html ================================ */
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.menu-content a {
+  display: block;
+  padding: 10px;
+  margin: 10px;
+  height: 30px;
+  width: 200px;
+  line-height: 30px;
+  background-color: #ddd;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 20px;
+  color: #555;
+  text-decoration: none;
+}
+
+.menu-content a:hover {
+  background-color: #ccc;
+}
+
+/* ================================ entity page ================================ */
+
+/* Container for Return and Add New buttons */
+.add-new-container {
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+/* Return button */
+.return-main-menu {
+  background-color: #ddd;
+  color: #555;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Add New button */
+.add-new-container button {
+  width: auto;
+  margin-left: 10px;
+}
+
+/* Main Table */
+.table {
+  margin-top: 40px;
+  border-collapse: collapse;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #aa1504;
+}
+
+.table caption {
+  font-size: 1.2em; 
+  background-color: #aa1504;
+  color: #ffffff;
+  padding: 10px; 
+  text-align: left;
+}
+
+/* Expand modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  border-radius: 10px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.modal-button {
+  background-color: #aa1504;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 30px; 
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================ ETC ================================ */
+
+
+
+
 
 /* Add Zoom Animation */
 .animate {
@@ -134,79 +313,9 @@ span.psw {
     width: 80%;
 }
 
-.signUpModal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
-}
 
-/* Modal Content/Box */
-.signUpModal-content {
-    background-color: #fefefe;
-    margin: 5% auto; /* Removed the bottom margin */
-    border: 1px solid #888;
-    width: 90%;
-    max-height: 80%; /* Set a maximum height for the modal */
-    overflow-y: auto; /* Enable vertical scrolling if the content is taller than the modal */
-}
 
-/* Position the login button in the top-right corner */
-.login-btn {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background-color: #aa1504;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
 
-.login-btn:hover {
-    opacity: 0.8;
-}
-
-/* Position the login button in the top-right corner */
-.logout-btn {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background-color: #aa1504;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.logout-btn:hover {
-    opacity: 0.8;
-}
-
-.search-btn {
-    position: fixed;
-    top: 10px;
-    right: 80px;
-    background-color: #aa1504;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.search-btn:hover {
-    opacity: 0.8;
-}
 
 label[for="signUpLabel"] {
     font-weight: bold;
@@ -231,57 +340,6 @@ input {
     margin-bottom: 10px;
     padding: 5px;
 }
-
-/* Staff Menu */
-.overlay {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
-    overflow-x: hidden;
-    transition: 0.5s;
-  }
-  
-  .overlay-content {
-    position: relative;
-    top: 25%;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-  }
-  
-  .overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-  }
-  
-  .overlay a:hover, .overlay a:focus {
-    color: #f1f1f1;
-  }
-  
-  .overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-  }
-  
-  @media screen and (max-height: 450px) {
-    .overlay a {font-size: 20px}
-    .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-    }
-  }
 
   /* Member table style index.html */
   table {
@@ -367,6 +425,13 @@ table th {
     cursor: pointer;
     border-radius: 5px;
   }
+
+  .modal-actions {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+  }
+  
 
 
   

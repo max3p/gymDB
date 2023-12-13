@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Momentum Fitness</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        Momentum Fitness
+        <button class="login-btn" onclick="redirectToLogin()" style="width:auto;">Log Out</button>
+    </header>
+
+    <!-- Log Out -->
+    <script>
+    function redirectToLogin() {
+        // Function to log out
+        window.location.href = "login.html";
+    }
+    </script>
+    
+    <!-- Return and Add New buttons -->
+    <div class="add-new-container">
+        <button class="return-main-menu" onclick="redirectToMenu()" style="width:auto;">← Return to Main Menu</button>
+        <button onclick="openAddNewModal()">Add New</button>
+    </div>
+
+    <script>
+        function redirectToMenu() {
+            // Function to return to main menu
+            window.location.href = "mainMenu.html";
+        }
+    </script>
+
+    <!-- List of staff -->
+    <table id="staffTable" class="table">
+        <caption>Staff</caption>
+    </table>
+
+    <!-- Expand Modal -->
+    <div id="expandModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('expandModal')">&times;</span>
+
+            <!-- Image on the left -->
+            <div class="modal-image">
+                <img src="./images/user-icon.png" alt="Employee Image">
+            </div>
+
+            <!-- Data -->
+            <div class="modal-data">
+                <p id="employeeNameInModal"></p>
+                <p id="employeeIdInModal"></p>
+                <p id="employeePhoneInModal"></p>
+                <p id="employeeAvInModal"></p>
+                <p id="employeeEmergencyCInModal"></p>
+
+                <!-- Edit and Delete buttons -->
+                <div class="modal-buttons">
+                    <!-- Empty because buttons are added by javascript -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Add New Modal -->
+    <div id="addNewModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addNewModal')">&times;</span>
+
+            <!-- Form to collect data -->
+            <form id="dataForm">
+                <!-- Name -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <!-- Phone number -->
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required>
+
+                <!-- Availability -->
+                <label for="availability">Availability:</label>
+                <input type="text" id="availability" name="availability" required>
+
+                <!-- Emergency phone number -->
+                <label for="emergencyPhone">Emergency Phone Number:</label>
+                <input type="text" id="emergencyPhone" name="emergencyPhone" required>
+
+                <!-- Submit button -->
+                <input type="button" value="Submit" onclick="collectData()">
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('editModal')">&times;</span>
+
+            <!-- Form to collect data -->
+            <form id="editForm">
+                <!-- Hidden field for employee ID -->
+                <input type="hidden" id="id2" name="id2">
+
+                <!-- Name -->
+                <label for="name">Name:</label>
+                <input type="text" id="name2" name="name2" required>
+
+                <!-- Phone number -->
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone2" name="phone2" required>
+
+                <!-- Availability -->
+                <label for="availability">Availability:</label>
+                <input type="text" id="availability2" name="availability2" required>
+
+                <!-- Emergency phone number -->
+                <label for="emergencyPhone">Emergency Phone Number:</label>
+                <input type="text" id="emergencyPhone2" name="emergencyPhone2" required>
+
+                <!-- Submit button -->
+                <input type="button" value="Update" onclick="updateData()">
+            </form>
+        </div>
+    </div>
+
+    <!-- Fetch staff data -->
+    <script src="staff.js"></script>
+
+</body>
+</html>
