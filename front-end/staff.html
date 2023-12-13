@@ -69,38 +69,72 @@
     </div>
 
     <!-- Add New Modal -->
-<div id="addNewModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('addNewModal')">&times;</span>
+    <div id="addNewModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addNewModal')">&times;</span>
 
-        <!-- Form to collect data -->
-        <form id="dataForm">
-            <!-- Name -->
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <!-- Form to collect data -->
+            <form id="dataForm">
+                <!-- Name -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
 
-            <!-- Phone number -->
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" name="phone" required>
+                <!-- Phone number -->
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required>
 
-            <!-- Availability -->
-            <label for="availability">Availability:</label>
-            <input type="text" id="availability" name="availability" required>
+                <!-- Availability -->
+                <label for="availability">Availability:</label>
+                <input type="text" id="availability" name="availability" required>
 
-            <!-- Emergency phone number -->
-            <label for="emergencyPhone">Emergency Phone Number:</label>
-            <input type="text" id="emergencyPhone" name="emergencyPhone" required>
+                <!-- Emergency phone number -->
+                <label for="emergencyPhone">Emergency Phone Number:</label>
+                <input type="text" id="emergencyPhone" name="emergencyPhone" required>
 
-            <!-- Submit button -->
-            <input type="button" value="Submit" onclick="collectData()">
-        </form>
+                <!-- Submit button -->
+                <input type="button" value="Submit" onclick="collectData()">
+            </form>
 
-        <!-- Display collected data -->
-        <div class="modal-data">
-            <p id="text"></p>
+            <!-- Display collected data -->
+            <div class="modal-data">
+                <p id="text"></p>
+            </div>
         </div>
     </div>
-</div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('editModal')">&times;</span>
+
+            <!-- Form to collect data -->
+            <form id="dataForm">
+                <!-- Name -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <!-- Phone number -->
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required>
+
+                <!-- Availability -->
+                <label for="availability">Availability:</label>
+                <input type="text" id="availability" name="availability" required>
+
+                <!-- Emergency phone number -->
+                <label for="emergencyPhone">Emergency Phone Number:</label>
+                <input type="text" id="emergencyPhone" name="emergencyPhone" required>
+
+                <!-- Submit button -->
+                <input type="button" value="Update" onclick="updateData()">
+            </form>
+
+            <!-- Display collected data -->
+            <div class="modal-data">
+                <p id="text"></p>
+            </div>
+        </div>
+    </div>
 
     <!-- Fetch staff data -->
     <script src="staff.js"></script>

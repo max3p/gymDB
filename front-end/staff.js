@@ -82,6 +82,25 @@ async function expand(employeeID) {
         .catch((error) => console.error('Error:', error));
 }
 
+// Define Edit and Delete buttons outside of Expand modal
+var editButton = document.createElement("button");
+editButton.innerHTML = "Edit";
+editButton.classList.add("modal-button");
+editButton.addEventListener("click", function() {
+    // Placeholder function for now
+    console.log("Edit button clicked");
+});
+document.getElementsByClassName("modal-buttons")[0].appendChild(editButton);
+
+var deleteButton = document.createElement("button");
+deleteButton.innerHTML = "Delete";
+deleteButton.classList.add("modal-button");
+deleteButton.addEventListener("click", function() {
+    // Placeholder function for now
+    console.log("Delete button clicked");
+});
+document.getElementsByClassName("modal-buttons")[0].appendChild(deleteButton);
+
 // Function to open expand modal and display employee ID
 function openExpandModal(employeeObject) {
     var modal = document.getElementById("expandModal");
@@ -94,31 +113,17 @@ function openExpandModal(employeeObject) {
     employeeAvInModal.textContent = "Availability: " + employeeObject.availability;
     employeeEmergencyCInModal.textContent = "Emergency Contact: " + employeeObject.emergency_contact;
 
-    // Display the "Edit" button in the modal
-    var editButton = document.createElement("button");
-    editButton.innerHTML = "Edit";
-    editButton.classList.add("modal-button");
+    // Update event listeners and text for "Edit" and "Delete" buttons
+    editButton.removeEventListener("click", null);
     editButton.addEventListener("click", function() {
         editEmployee(employeeObject.employee_id);
     });
-    document.getElementsByClassName("modal-buttons")[0].appendChild(editButton);
 
-    // Display the "Delete" button in the modal
-    var deleteButton = document.createElement("button");
-    deleteButton.innerHTML = "Delete";
-    deleteButton.classList.add("modal-button");
+    deleteButton.removeEventListener("click", null);
     deleteButton.addEventListener("click", function() {
         deleteEmployee(employeeObject.employee_id);
     });
-    document.getElementsByClassName("modal-buttons")[0].appendChild(deleteButton);
 
-    // Display the modal
-    modal.style.display = "block";
-}
-
-// Opens the Add New modal
-function openAddNewModal() {
-    var modal = document.getElementById("addNewModal");
     // Display the modal
     modal.style.display = "block";
 }
@@ -161,7 +166,12 @@ function collectData() {
 function editEmployee(employee_id){
     console.log("edit employee with id:" + employee_id);
 
-    //TODO
+    // Close Expand modal
+    closeModal('expandModal');
+
+    // Display Edit modal
+    var modal = document.getElementById("addNewModal");
+    modal.style.display = "block";
 
 }
 
@@ -196,6 +206,8 @@ function deleteEmployee(employee_id){
 // Function to close a modal
 function closeModal(modalName) {
     var modal = document.getElementById(modalName);
+
+    // Hide
     modal.style.display = "none";
 }
 
@@ -203,10 +215,13 @@ function closeModal(modalName) {
 window.onclick = function (event) {
     var modal = document.getElementById("expandModal");
     var modal2 = document.getElementById("addNewModal");
+    var modal3 = document.getElementById("editModal");
     if (event.target == modal) {
-        modal.style.display = "none";
+        closeModal("expandModal");
     }else if(event.target == modal2){
-        modal2.style.display = "none";
+        closeModal("addNewModal");
+    }else if(event.target == modal3){
+        closeModal("editModal");
     }
 };
 
