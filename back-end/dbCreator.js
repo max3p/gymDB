@@ -45,7 +45,7 @@ function createDB() {
                 "`name` CHAR(50)," +
                 "`phone_number` CHAR(15)," +
                 "`availability` CHAR(100)," +
-                "`emergency_contact` TEXT," +
+                "`emergency_contact` CHAR(50)," +
                 "`franchise_number` char(8)" +
                 ");");
 
@@ -53,7 +53,7 @@ function createDB() {
                 createTable("Trainer", "CREATE TABLE `gymdb`.`Trainer` (" +
                 "`employee_id` CHAR(8) PRIMARY KEY," +
                 "`schedule` CHAR(100)," +
-                "`clients` TEXT," +
+                "`clients` CHAR(50)," +
                 "`specialization` CHAR(50)" +
                 ");");
 
@@ -72,27 +72,27 @@ function createDB() {
                 "`equipment_id` char(8) PRIMARY KEY," +
                 "`equipment_condition` CHAR(50)," +
                 "`name` CHAR(50)," +
-                "`date_bought` DATE," +
-                "`maintenance_history` TEXT" +
+                "`date_bought` CHAR(50)," +
+                "`maintenance_history` CHAR(50)" +
                 ");");
 
                 // Create workout plan table
                 createTable("WorkoutPlan", "CREATE TABLE `gymdb`.`WorkoutPlan` (" +
-                "`report_number` char(8) PRIMARY KEY," +
+                "`workoutplan_id` char(8) PRIMARY KEY," +
                 "`employee_id` char(8)," +
-                "`date_generated` DATE," +
+                "`date_generated` CHAR(50)," +
                 "`days_of_the_week` CHAR(50)," +
                 "`frequency` CHAR(20)," +
-                "`exercises` TEXT" +
+                "`exercises` CHAR(50)" +
                 ");");
 
                 // Create incident report table
                 createTable("IncidentReport", "CREATE TABLE `gymdb`.`IncidentReport` (" +
-                "`report_number` char(8) PRIMARY KEY," +
-                "`people_involved` TEXT," +
-                "`equipment_involved` TEXT," +
-                "`date` DATE," +
-                "`time` TIME" +
+                "`incidentreport_id` char(8) PRIMARY KEY," +
+                "`people_involved` CHAR(50)," +
+                "`equipment_involved` CHAR(50)," +
+                "`date` CHAR(50)," +
+                "`time` CHAR(50)" +
                 ");");
 
                 // Create revenue report table

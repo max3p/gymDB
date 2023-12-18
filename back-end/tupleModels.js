@@ -48,7 +48,7 @@ const Equipment = {
 };
 
 const WorkoutPlan = {
-    report_number: "",
+    report_id: "",
     employee_id: "",
     date_generated: "",
     days_of_the_week: "",
@@ -57,11 +57,11 @@ const WorkoutPlan = {
 };
 
 const IncidentReport = {
-    report_number: "",
+    report_id: "",
     people_involved: "",
     equipment_involved: "",
     date: "",
-    time: ""
+    //time: ""
 };
 
 const RevenueReport = {

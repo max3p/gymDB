@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Momentum Fitness</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        Momentum Fitness
+        <button class="login-btn" onclick="redirectToLogin()" style="width:auto;">Log Out</button>
+    </header>
+
+    <!-- Log Out -->
+    <script>
+    function redirectToLogin() {
+        // Function to log out
+        window.location.href = "login.html";
+    }
+    </script>
+    
+    <!-- Return and Add New buttons -->
+    <div class="add-new-container">
+        <button class="return-main-menu" onclick="redirectToMenu()" style="width:auto;">← Return to Main Menu</button>
+        <button onclick="openAddNewModal()">Add New</button>
+    </div>
+
+    <script>
+        function redirectToMenu() {
+            // Function to return to main menu
+            window.location.href = "mainMenu.html";
+        }
+    </script>
+
+    <!-- List of incidentReports -->
+    <table id="incidentReportTable" class="table">
+        <caption>Incident Reports</caption>
+    </table>
+
+    <!-- Expand Modal -->
+    <div id="expandModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('expandModal')">&times;</span>
+
+            <!-- Image on the left -->
+            <div class="modal-image">
+                <img src="./images/equipment.png" alt="Image">
+            </div>
+
+            <!-- Data -->
+            <div class="modal-data">
+                <p id="incidentReportIdInModal"></p>
+                <p id="incidentReportPeopleInvolvedInModal"></p>
+                <p id="incidentReportEquipmentInvolvedInModal"></p>
+                <p id="incidentReportDateInModal"></p>
+
+                <!-- Edit and Delete buttons -->
+                <div class="modal-buttons">
+                    <!-- Empty because buttons are added by javascript -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Add New Modal -->
+    <div id="addNewModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addNewModal')">&times;</span>
+
+            <!-- Form to collect data -->
+            <form id="dataForm">
+                <!-- People Involved -->
+                <label for="peopleInvolved">People Involved:</label>
+                <input type="text" id="peopleInvolved" name="peopleInvolved" required>
+
+                <!-- Equipment Involved -->
+                <label for="equipmentInvolved">Equipment Involved:</label>
+                <input type="text" id="equipmentInvolved" name="equipmentInvolved" required>
+
+                <!-- Date -->
+                <label for="date">Date:</label>
+                <input type="text" id="date" name="date" required>
+
+                <!-- Submit button -->
+                <input type="button" value="Submit" onclick="collectData()">
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('editModal')">&times;</span>
+
+            <!-- Form to collect data -->
+            <form id="editForm">
+                <!-- Hidden field for incidentReport ID -->
+                <input type="hidden" id="id2" name="id2">
+
+                <!-- People Involved -->
+                <label for="peopleInvolved">People Involved:</label>
+                <input type="text" id="peopleInvolved2" name="peopleInvolved2" required>
+
+                <!-- Equipment Involved -->
+                <label for="equipmentInvolved">Equipment Involved:</label>
+                <input type="text" id="equipmentInvolved2" name="equipmentInvolved2" required>
+
+                <!-- Date -->
+                <label for="date">Date:</label>
+                <input type="text" id="date2" name="date2" required>
+
+                <!-- Submit button -->
+                <input type="button" value="Update" onclick="updateData()">
+            </form>
+        </div>
+    </div>
+
+    <!-- Fetch incidentReport data -->
+    <script src="incidentReport.js"></script>
+
+</body>
+</html>
